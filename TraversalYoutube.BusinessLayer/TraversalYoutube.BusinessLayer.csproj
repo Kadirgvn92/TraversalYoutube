@@ -24,4 +24,8 @@
     <ProjectReference Include="..\TraversalYoutube.EntityLayer\TraversalYoutube.EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ValidationRules\" />
+  </ItemGroup>
+
 </Project>
