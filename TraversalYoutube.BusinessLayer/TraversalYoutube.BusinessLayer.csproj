@@ -19,4 +19,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TraversalYoutube.DataAccessLayer\TraversalYoutube.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\TraversalYoutube.EntityLayer\TraversalYoutube.EntityLayer.csproj" />
+  </ItemGroup>
+
 </Project>
