@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.DataAccessLayer.Abstract;
-public interface IGenericDal<T> where T : class
+public interface ITestimonailDal : IGenericDal<Testimonail>
 {
-    void Insert(T t);
-    void Update(T t);   
-    void Delete(T t);
-    List<T> GetAll();   
 }
