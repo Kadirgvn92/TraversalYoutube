@@ -4,13 +4,12 @@ using TraversalYoutube.DataAccessLayer.EntityFramework;
 
 namespace TraversalYoutube.PresentationLayer.ViewComponents.Default;
 
-public class _FeaturePartial : ViewComponent
+public class _SubAboutPartial : ViewComponent
 {
-    FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
+    SubAboutManager subAboutManager = new SubAboutManager(new EfSubAboutDal());
     public IViewComponentResult Invoke()
     {
-        //var values = featureManager.TGetAll();
-        //ViewBag.image1 = featureManager.
-        return View();
+        var values = subAboutManager.TGetAll();
+        return View(values);
     }
 }
