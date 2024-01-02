@@ -9,8 +9,7 @@ public class _FeaturePartial : ViewComponent
     FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
     public IViewComponentResult Invoke()
     {
-        var values = featureManager.TGetAll();
-
-        return View(values);
+        //var values = featureManager.TGetAll();
+        return View();
     }
 }
