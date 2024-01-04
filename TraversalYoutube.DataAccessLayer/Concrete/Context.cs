@@ -26,4 +26,5 @@ public class Context : DbContext
     public DbSet<Newsletter> Newsletters { get; set; }
     public DbSet<SubAbout> SubAbouts { get; set; }
     public DbSet<Testimonail> Testimonails { get; set; }
+    public DbSet<Comment> Comments { get; set; }
 }
