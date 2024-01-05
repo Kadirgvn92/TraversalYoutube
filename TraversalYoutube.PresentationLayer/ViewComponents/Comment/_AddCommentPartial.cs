@@ -2,7 +2,7 @@
 
 namespace TraversalYoutube.PresentationLayer.ViewComponents.Comment;
 
-public class _CommentList : ViewComponent
+public class _AddCommentPartial : ViewComponent
 {
     public IViewComponentResult Invoke()
     {
