@@ -19,7 +19,7 @@ public class CommentManager : ICommentService
 
     public void TAdd(Comment entity)
     {
-        throw new NotImplementedException();
+        _commentDal.Insert(entity);
     }
 
     public void TDelete(Comment entity)
