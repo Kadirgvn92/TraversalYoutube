@@ -1,0 +1,71 @@
+﻿@using TraversalYoutube.EntityLayer.Concrete
+@model List<Destination>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6 class="font-weight-bolder">Tur Rotalarım</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-primary text-sm font-weight-bolder  ">Şehir</th>
+                                    <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Gün / Gece</th>
+                                    <th class="text-uppercase text-primary text-sm font-weight-bolder ">Fiyat</th>
+                                    <th class="text-uppercase text-primary text-sm font-weight-bolder ">Açıklama</th>
+                                    <th class="text-uppercase text-primary text-sm font-weight-bolder  text-center">Kapasite</th>
+                                    <th class="text-uppercase text-primary text-sm font-weight-bolder ">Detaylar</th>
+                                </tr>
+                            </thead>
+                            <tbody class="border-top">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td width="300px">
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img src="@item.Image" class="avatar avatar-s me-3" alt="user1">
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">@item.City</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm font-weight-bold mb-0">@item.DayNight</p>
+                                        </td>
+                                        <td class="align-middle text-s">
+                                            <span class="text-sm font-weight-bold mb-0">@item.Price</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <span class=" text-sm font-weight-bold mb-0">@item.Description</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <a href="#" class="text-secondary font-weight-bold text-sm text-center">
+                                                @item.Capacity
+                                            </a>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="#" class="btn btn-outline-info " >Detaylar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
