@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Concrete;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
 using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.PresentationLayer.Controllers;
+
 public class DestinationController : Controller
 {
     DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
