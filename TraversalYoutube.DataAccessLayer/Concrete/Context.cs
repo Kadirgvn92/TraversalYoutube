@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.DataAccessLayer.Concrete;
-public class Context : DbContext
+public class Context : IdentityDbContext<AppUser,AppRole,int>
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -27,4 +28,7 @@ public class Context : DbContext
     public DbSet<SubAbout> SubAbouts { get; set; }
     public DbSet<Testimonail> Testimonails { get; set; }
     public DbSet<Comment> Comments { get; set; }
+
+    //burada yeni bir dbset oluşturup AppUser ve AppRole sınıfını tanımlamamaız
+    //gerekmez çünkü IdentityDBContext miras aldığı için
 }
