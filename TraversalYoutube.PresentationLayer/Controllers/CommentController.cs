@@ -10,14 +10,16 @@ public class CommentController : Controller
     [HttpGet]
     public PartialViewResult AddComment()
     {
+
         return PartialView();
     }
     [HttpPost]
-    public PartialViewResult AddComment(Comment comment)
+    public IActionResult AddComment(Comment comment)
     {
         comment.CommentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
         comment.CommentState = true;
+        ViewBag.Comment = comment.DestinationID;
         commentManager.TAdd(comment);
-        return PartialView();
+        return RedirectToAction("Index","Destination");
     }
 }
