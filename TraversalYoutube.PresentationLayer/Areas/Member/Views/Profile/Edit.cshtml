@@ -1,24 +1,23 @@
 ﻿@model TraversalYoutube.PresentationLayer.Areas.Member.Models.UserEditViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>
 
 
 <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
-        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('/soft-ui-dashboard/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
             <span class="mask bg-gradient-primary opacity-6"></span>
         </div>
         <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="/userimages/@Model.imageurl" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                        <img src="@Model.imageurl" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                     </div>
                 </div>
                 <div class="col-auto my-auto">
@@ -109,7 +108,8 @@
                                 <h6 class="mb-0 text-primary">Profil Bilgileri</h6>
                             </div>
                             <div class="col-md-4 text-end">
-                                <button type="button" id="editProfileButton" class="fas fa-user-edit text-secondary text-sm border-0 bg-transparent" data-toggle="modal" data-target="#EditModal" title="Edit Profile"></button>
+                                <button type="button" id="editProfileButton" class="fas fa-user-edit text-secondary text-sm" data-toggle="modal" data-target="#EditModal" title="Edit Profile"></button>
+
                             </div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                                 </div>
                                 <div class="card-body p-3">
                                     <hr class="horizontal gray-light my-0">
-                                    <form method="post" id="editProfileForm" action="@Url.Action("Index", "Profile")" enctype="multipart/form-data">
+                                    <form method="post" id="editProfileForm"  action="@Url.Action("Edit", "Profile")">
                                         <div class="form-group">
                                             <label>Ad</label>
                                             <input type="text" class="form-control form-control-sm" asp-for="name" aria-describedby="emailHelp" placeholder="Adınızı girin">
@@ -170,17 +170,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Şifre</label>
-                                            <input required type="password" class="form-control form-control-sm" asp-for="password" placeholder="Şifrenizi girin">
-                                            <span asp-validation-for="password"></span>
+                                            <input type="password" class="form-control form-control-sm" asp-for="password" placeholder="Şifrenizi girin">
                                         </div>
                                         <div class="form-group">
                                             <label>Şifre Tekrar</label>
-                                            <input required type="password" class="form-control form-control-sm" asp-for="confirmpassword" placeholder="Şifrenizi tekrar girin">
-                                            <span asp-validation-for="confirmpassword"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Profil Foto Yükle</label>
-                                            <input type="file" class="form-control-file" asp-for="Image">
+                                            <input type="password" class="form-control form-control-sm" asp-for="confirmpassword" placeholder="Şifrenizi tekrar girin">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Güncelle</button>
                                     </form>
@@ -222,4 +216,3 @@
         });
     });
 </script>
-
