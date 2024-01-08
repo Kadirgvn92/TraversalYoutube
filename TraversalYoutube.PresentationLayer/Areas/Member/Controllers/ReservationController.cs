@@ -10,6 +10,8 @@ namespace TraversalYoutube.PresentationLayer.Areas.Member.Controllers;
 public class ReservationController : Controller
 {
     DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
+
+    ReservationManager reservationManager = new ReservationManager(new EfReservationDal());
     public IActionResult CurrentReservation()
     {
         return View();
@@ -33,6 +35,8 @@ public class ReservationController : Controller
     [HttpPost]
     public IActionResult NewReservation(Reservation p)
     {
-        return View();
+        p.AppUserId = 10;
+        reservationManager.TAdd(p);
+        return RedirectToAction("CurrentReservation");
     }
 }
