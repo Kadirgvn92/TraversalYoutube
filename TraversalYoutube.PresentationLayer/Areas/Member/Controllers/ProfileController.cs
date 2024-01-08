@@ -41,6 +41,7 @@ public class ProfileController : Controller
             await userEditViewModel.Image.CopyToAsync(stream);
             user.ImageUrl = imagename;
         }
+        
         user.Name = userEditViewModel.name;
         user.Surname = userEditViewModel.surname;
         user.PhoneNumber = userEditViewModel.phonenumber;
@@ -51,10 +52,12 @@ public class ProfileController : Controller
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                return RedirectToAction("SignIn", "Login");
+                
+                return RedirectToAction("Index", "Profile", new { area = "Member" });
             }
             else
             {
+                await Task.Delay(2000);
                 return RedirectToAction("Index", "Profile", new { area = "Member" });
             }
         }

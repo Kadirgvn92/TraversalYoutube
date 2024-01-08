@@ -31,7 +31,9 @@ public class LoginController : Controller
             Name = p.Name,
             Surname = p.Surname,
             Email = p.Mail,
-            UserName = p.Username
+            UserName = p.Username,
+            PhoneNumber = p.PhoneNumber,
+            ImageUrl = "default.png"
         };
         if(p.Password == p.ConfirmPassword) 
         {
@@ -68,7 +70,8 @@ public class LoginController : Controller
             }
             else
             {
-                return RedirectToAction("SignIn", "Login");
+                ViewBag.ErrorMessage = "Geçersiz Kullanıcı adı veya Şifre. Lütfen tekrar deneyiniz.";
+                return View();
             }
         }
         return View(); 

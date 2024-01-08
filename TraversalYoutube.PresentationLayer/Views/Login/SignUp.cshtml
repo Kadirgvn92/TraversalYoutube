@@ -52,27 +52,31 @@
                         <div class="card-body">
                             <form method="post" role="form text-left">
                                 <div class="mb-3">
-                                    <input type="text" asp-for="Name" class="form-control mb-2" placeholder="Name" aria-label="Name" >
+                                    <input type="text" required asp-for="Name" class="form-control mb-2" placeholder="Name" aria-label="Name" >
                                     <span asp-validation-for="Name" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" asp-for="Surname" class="form-control mb-2" placeholder="Surname" aria-label="Surname">
+                                    <input type="text" required asp-for="Surname" class="form-control mb-2" placeholder="Surname" aria-label="Surname">
                                     <span asp-validation-for="Surname" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" asp-for="Username" class="form-control mb-2" placeholder="Username" aria-label="Username">
+                                    <input type="text" required asp-for="Username" class="form-control mb-2" placeholder="Username" aria-label="Username">
                                     <span asp-validation-for="Username" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" asp-for="Mail" class="form-control mb-2" placeholder="Email" aria-label="Email">
+                                    <input type="email" required asp-for="Mail" class="form-control mb-2" placeholder="Email" aria-label="Email">
                                     <span asp-validation-for="Mail" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" asp-for="Password" class="form-control mb-2" placeholder="Password" aria-label="Password">
+                                    <input type="text" required asp-for="PhoneNumber" class="form-control mb-2" placeholder="Telefon Numarası" aria-label="Telefon">
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"> </span>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" required asp-for="Password" class="form-control mb-2" placeholder="Password" aria-label="Password">
                                     <span asp-validation-for="Password" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" asp-for="ConfirmPassword" class="form-control mb-2" placeholder="Confirm Password" aria-label="Password">
+                                    <input type="password" required asp-for="ConfirmPassword" class="form-control mb-2" placeholder="Confirm Password" aria-label="Password">
                                     <span asp-validation-for="ConfirmPassword" class="text-danger"> </span>
                                 </div>
 
