@@ -13,8 +13,6 @@ public class Context : IdentityDbContext<AppUser,AppRole,int>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer("server=DESKTOP-A6C5CRN\\SQLEXPRESS;database=TraversalDb;integrated security=true;");
-
-
     }
 
     public DbSet<About> Abouts { get; set; }
@@ -28,6 +26,7 @@ public class Context : IdentityDbContext<AppUser,AppRole,int>
     public DbSet<SubAbout> SubAbouts { get; set; }
     public DbSet<Testimonail> Testimonails { get; set; }
     public DbSet<Comment> Comments { get; set; }
+    public DbSet<Reservation> Reservations { get; set; }
 
     //burada yeni bir dbset oluşturup AppUser ve AppRole sınıfını tanımlamamaız
     //gerekmez çünkü IdentityDBContext miras aldığı için

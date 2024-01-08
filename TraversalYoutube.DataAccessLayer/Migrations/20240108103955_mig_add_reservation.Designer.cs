@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TraversalYoutube.DataAccessLayer.Concrete;
 
@@ -11,9 +12,10 @@ using TraversalYoutube.DataAccessLayer.Concrete;
 namespace TraversalYoutube.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240108103955_mig_add_reservation")]
+    partial class mig_add_reservation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -525,7 +527,7 @@ namespace TraversalYoutube.DataAccessLayer.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservation");
                 });
 
             modelBuilder.Entity("TraversalYoutube.EntityLayer.Concrete.SubAbout", b =>

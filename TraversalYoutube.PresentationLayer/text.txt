@@ -1,0 +1,3 @@
+﻿Ypılacaklar
+
+- şifremi unuttum sekmesi yapılacak email doğrulamasından sonra onay kodu ile şifreyi güncelleyecek
