@@ -20,5 +20,6 @@ public class Destination
     public string Details2 { get; set; }
     public string Image2 { get; set; }
     public List<Comment> Comments { get; set; }
+    public List<Reservation> Reservations { get; set; }
 
 }

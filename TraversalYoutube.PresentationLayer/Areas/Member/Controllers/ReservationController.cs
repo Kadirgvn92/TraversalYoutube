@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TraversalYoutube.BusinessLayer.Concrete;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
@@ -12,6 +13,14 @@ public class ReservationController : Controller
     DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
 
     ReservationManager reservationManager = new ReservationManager(new EfReservationDal());
+
+    private readonly UserManager<AppUser> _userManager;
+
+    public ReservationController(UserManager<AppUser> userManager)
+    {
+        _userManager = userManager;
+    }
+
     public IActionResult CurrentReservation()
     {
         return View();
@@ -19,6 +28,13 @@ public class ReservationController : Controller
     public IActionResult OldReservation()
     {
         return View();
+    }
+
+    public async Task<IActionResult> ApprovalReservation()
+    {
+        var values = await _userManager.FindByNameAsync(User.Identity.Name);
+        var valueList = reservationManager.GetListApprovalReservation(values.Id);
+        return View(valueList);
     }
     [HttpGet]
     public IActionResult NewReservation()
@@ -35,7 +51,8 @@ public class ReservationController : Controller
     [HttpPost]
     public IActionResult NewReservation(Reservation p)
     {
-        p.AppUserId = 10;
+        p.AppUserId = 12;
+        p.Status = "Onay Bekliyor";
         reservationManager.TAdd(p);
         return RedirectToAction("CurrentReservation");
     }

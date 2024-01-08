@@ -17,6 +17,11 @@ public class ReservationManager : IReservationService
         _reservationDal = reservationDal;
     }
 
+    public List<Reservation> GetListApprovalReservation(int id)
+    {
+       return  _reservationDal.GetListByFilter(x => x.AppUserId == id && x.Status == "Onay Bekliyor");
+    }
+
     public void TAdd(Reservation entity)
     {
         _reservationDal.Insert(entity);

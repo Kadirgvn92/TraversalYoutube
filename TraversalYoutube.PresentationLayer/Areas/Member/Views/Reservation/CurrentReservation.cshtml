@@ -1,10 +1,9 @@
-﻿@using TraversalYoutube.EntityLayer.Concrete
-@model List<Destination>
-
+﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "CurrentReservation";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
@@ -33,38 +32,35 @@
                                         </tr>
                                     </thead>
                                     <tbody class="border-top">
-                                        @foreach (var item in Model)
-                                        {
                                             <tr>
                                                 <td width="300px">
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
-                                                            <img src="@item.Image" class="avatar avatar-s me-3" alt="user1">
+                                                            <img src="" class="avatar avatar-s me-3" alt="user1">
                                                         </div>
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">@item.City</h6>
+                                                            <h6 class="mb-0 text-sm"></h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <p class="text-sm font-weight-bold mb-0">@item.DayNight</p>
+                                                    <p class="text-sm font-weight-bold mb-0"></p>
                                                 </td>
                                                 <td class="align-middle text-s">
-                                                    <span class="text-sm font-weight-bold mb-0">@item.Price</span>
+                                                    <span class="text-sm font-weight-bold mb-0"></span>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <span class=" text-sm font-weight-bold mb-0">@item.Description</span>
+                                                    <span class=" text-sm font-weight-bold mb-0"></span>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <a href="#" class="text-secondary font-weight-bold text-sm text-center">
-                                                        @item.Capacity
+                                                       
                                                     </a>
                                                 </td>
                                                 <td class="align-middle">
                                                     <a href="#" class="btn btn-outline-info ">Detaylar</a>
                                                 </td>
                                             </tr>
-                                        }
                                     </tbody>
                                 </table>
                             </div>
