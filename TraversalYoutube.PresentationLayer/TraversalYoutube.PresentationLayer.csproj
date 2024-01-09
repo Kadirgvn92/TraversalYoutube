@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\sneat-1.0.0\**" />
+    <Content Remove="wwwroot\sneat-1.0.0\**" />
+    <EmbeddedResource Remove="wwwroot\sneat-1.0.0\**" />
+    <None Remove="wwwroot\sneat-1.0.0\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
@@ -47,9 +54,6 @@
     <None Include="wwwroot\AdminLTE-3.2.0\.github\workflows\codeql.yml" />
     <None Include="wwwroot\AdminLTE-3.2.0\.github\workflows\docs.yml" />
     <None Include="wwwroot\AdminLTE-3.2.0\.github\workflows\lint.yml" />
-    <None Include="wwwroot\sneat-1.0.0\.github\workflows\handle-new-issue-comment.yml" />
-    <None Include="wwwroot\sneat-1.0.0\.github\workflows\handle-new-issue.yml" />
-    <None Include="wwwroot\sneat-1.0.0\.github\workflows\issue-staler.yml" />
   </ItemGroup>
 
 </Project>

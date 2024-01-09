@@ -1,8 +1,94 @@
 ﻿
+@model List<Destination>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
 
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Rotalar Ekranı</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Rotalar</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Rotalar kısmını bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
+                            </div>
+                            <br />
+                            <table class="table align-items-center mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Şehir</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Gün / Gece</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Fiyat</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Açıklama</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  text-center">Kapasite</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Sitede Gör</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Sil</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td width="300px">
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="@item.Image" class="rounded-circle me-3" style="width:100px;height:100px;" alt="user1">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center ml-4">
+                                                        <h6 class="mb-0 font-weight-bold  text-sm">@item.City</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-sm font-weight-bold mb-0">@item.DayNight</p>
+                                            </td>
+                                            <td class="align-middle ">
+                                                <span class="text-sm font-weight-bold mb-0">@item.Price</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class=" text-sm font-weight-bold mb-0">@item.Description</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a href="#" class="text-secondary font-weight-bold text-sm text-center">
+                                                    @item.Capacity
+                                                </a>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="#" class="btn btn-outline-info ">Sidete Gör</a>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="#" class="btn btn-outline-danger ">Sil</a>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="#" class="btn btn-outline-success ">Güncelle</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <br />
+                            <div>
+                                <a href="/Education/CreateEducation/" class="btn btn-primary">Yeni Rota Oluşturun</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     

@@ -1,0 +1,67 @@
+﻿
+@model Destination
+
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card h-100">
+                <div class="card-header pb-0 p-3">
+                    <div class="row">
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-0 text-primary">Profil Bilgileri</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-3">
+                    <hr class="horizontal gray-light my-0">
+                    <form method="post" id="editProfileForm" action="@Url.Action("Index", "Profile")" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Ad</label>
+                            <input type="text" class="form-control form-control-sm" asp-for="City" aria-describedby="emailHelp" placeholder="Adınızı girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Soyad</label>
+                            <input type="text" class="form-control form-control-sm" asp-for="DayNight" placeholder="Soyadınızı girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon Numarası</label>
+                            <input type="text" class="form-control form-control-sm" asp-for="Price" placeholder="Telefon Numaranızı girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon Numarası</label>
+                            <input type="text" class="form-control form-control-sm" asp-for="Capacity" placeholder="Telefon Numaranızı girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon Numarası</label>
+                            <input type="text" class="form-control form-control-sm" asp-for="Details1" placeholder="Telefon Numaranızı girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon Numarası</label>
+                            <input type="text" class="form-control form-control-sm" asp-for="Details2" placeholder="Telefon Numaranızı girin">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ana Rota Resim Yükle</label>
+                            <input required type="file" class="form-control-file" asp-for="Image">
+                        </div>
+                        <div class="form-group">
+                            <label>Cover Resim Yükle</label>
+                            <input required type="file" class="form-control-file" asp-for="CoverImage">
+                        </div>
+                        <div class="form-group">
+                            <label>2.Rota Resmi Yükle</label>
+                            <input required type="file" class="form-control-file" asp-for="Image2">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

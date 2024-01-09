@@ -73,6 +73,8 @@ body {
   outline: 0 !important;
 }
 
+
+
 hr {
   box-sizing: content-box;
   height: 0;
@@ -439,6 +441,102 @@ mark,
   padding: 0.2em;
   background-color: #fcf8e3;
 }
+
+
+.avatar {
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  height: 48px;
+  width: 48px;
+  transition: all .2s ease-in-out;
+}
+
+  .avatar img {
+    width: 100%;
+  }
+
+  .avatar + .avatar-content {
+    display: inline-block;
+    margin-left: 0.75rem;
+  }
+
+  .avatar.avatar-raised {
+    margin-top: -24px;
+  }
+
+  .avatar.avatar-scale-up:hover {
+    transform: scale(1.2);
+  }
+
+.active .avatar.avatar-scale-up {
+  transform: scale(1.2);
+}
+
+.avatar-xxl {
+  width: 110px !important;
+  height: 110px !important;
+}
+
+  .avatar-xxl.avatar-raised {
+    margin-top: -55px;
+  }
+
+.avatar-xl {
+  width: 74px !important;
+  height: 74px !important;
+}
+
+  .avatar-xl.avatar-raised {
+    margin-top: -37px;
+  }
+
+.avatar-lg {
+  width: 58px !important;
+  height: 58px !important;
+  font-size: 0.875rem;
+}
+
+  .avatar-lg.avatar-raised {
+    margin-top: -29px;
+  }
+
+.avatar-sm {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 0.875rem;
+}
+
+  .avatar-sm.avatar-raised {
+    margin-top: -18px;
+  }
+
+.avatar-xs {
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 0.75rem;
+}
+
+  .avatar-xs.avatar-raised {
+    margin-top: -12px;
+  }
+
+.avatar-group .avatar {
+  position: relative;
+  z-index: 2;
+  border: 2px solid #fff;
+}
+
+  .avatar-group .avatar:hover {
+    z-index: 3;
+  }
+
+  .avatar-group .avatar + .avatar {
+    margin-left: -1rem;
+  }
 
 .list-unstyled {
   padding-left: 0;
