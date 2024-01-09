@@ -1,9 +1,9 @@
-﻿
+﻿@model List<Reservation>
+
 @{
     ViewData["Title"] = "CurrentReservation";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 
 <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
@@ -15,54 +15,66 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6 class="font-weight-bolder">Tur Rotalarım</h6>
+                            <h6 class="font-weight-bolder">Onaylanan Rezervasyonlarım</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
 
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-primary text-sm font-weight-bolder  ">Şehir</th>
-                                            <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Gün / Gece</th>
-                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Fiyat</th>
-                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Açıklama</th>
-                                            <th class="text-uppercase text-primary text-sm font-weight-bolder  text-center">Kapasite</th>
-                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Detaylar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="border-top">
+                                @if (!Model.Any())
+                                {
+
+                                    <div class="container mt-5">
+
+                                        <hr class="" />
+                                        <br />
+                                        <h5 class="text-center font-weight-bold text-primary">Onaylanan rezervasyonunuz bulunmamaktadır. Bilgi için lütfen iletişime geçiniz.</h5>
+                                        <br />
+                                        <br />
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <table class="table align-items-center mb-0">
+                                        <thead>
                                             <tr>
-                                                <td width="300px">
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div>
-                                                            <img src="" class="avatar avatar-s me-3" alt="user1">
-                                                        </div>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm"></h6>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="text-sm font-weight-bold mb-0"></p>
-                                                </td>
-                                                <td class="align-middle text-s">
-                                                    <span class="text-sm font-weight-bold mb-0"></span>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <span class=" text-sm font-weight-bold mb-0"></span>
-                                                </td>
-                                                <td class="align-middle text-center">
-                                                    <a href="#" class="text-secondary font-weight-bold text-sm text-center">
-                                                       
-                                                    </a>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <a href="#" class="btn btn-outline-info ">Detaylar</a>
-                                                </td>
+                                                <th class="text-uppercase text-primary text-sm font-weight-bolder">Lokasyon</th>
+                                                <th class="text-uppercase text-primary text-sm font-weight-bolder ps-2">Kişi Sayısı</th>
+                                                <th class="text-uppercase text-primary text-sm font-weight-bolder">Rezervasyon Tarihi</th>
+                                                <th class="text-uppercase text-primary text-sm font-weight-bolder">Durum</th>
                                             </tr>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody class="border-top">
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td width="300px">
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm"> @item.Destination.City </h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <p class="text-sm font-weight-bold mb-0">@item.PersonCount</p>
+                                                    </td>
+                                                    <td class="align-middle text-s">
+                                                        <span class="text-sm font-weight-bold mb-0">@item.ReservationDate.Date.ToShortDateString()</span>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <span class=" text-sm font-weight-bold mb-0">@item.Status</span>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <a href="#" class="btn btn-outline-info ">Detaylar</a>
+                                                    </td>
+                                                </tr>
+
+
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+
                             </div>
                         </div>
                     </div>

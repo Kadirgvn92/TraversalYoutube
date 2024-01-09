@@ -9,5 +9,8 @@ using TraversalYoutube.EntityLayer.Concrete;
 namespace TraversalYoutube.BusinessLayer.Abstract;
 public interface IReservationService : IGenericService<Reservation>
 {
-    List<Reservation> GetListApprovalReservation(int id);
+
+    List<Reservation> GetListWithReservationByWaitApproval(int id);
+    List<Reservation> GetListWithReservationByAccepted(int id);
+    List<Reservation> GetListWithReservationByPrevious(int id);
 }

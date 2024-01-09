@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <form method="post" role="form text-left" id="ResForm">
                         <div class="mb-3">
-                           @*  @Html.DropDownListFor(x => x.Destination, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" }) *@
+                            @Html.DropDownListFor(x => x.Destination, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
                         </div>
                         <div class="mb-3">
                             <input type="text" required asp-for="PersonCount" class="form-control mb-2" placeholder="Kişi Sayısı" aria-label="Surname">

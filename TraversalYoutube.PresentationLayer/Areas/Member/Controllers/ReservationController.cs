@@ -21,19 +21,23 @@ public class ReservationController : Controller
         _userManager = userManager;
     }
 
-    public IActionResult CurrentReservation()
+    public async Task<IActionResult> CurrentReservation()
     {
-        return View();
+        var values = await _userManager.FindByNameAsync(User.Identity.Name);
+        var valueList = reservationManager.GetListWithReservationByAccepted(values.Id);
+        return View(valueList);
     }
-    public IActionResult OldReservation()
+    public async Task<IActionResult> OldReservation()
     {
-        return View();
+        var values = await _userManager.FindByNameAsync(User.Identity.Name);
+        var valueList = reservationManager.GetListWithReservationByPrevious(values.Id);
+        return View(valueList);
     }
 
     public async Task<IActionResult> ApprovalReservation()
     {
         var values = await _userManager.FindByNameAsync(User.Identity.Name);
-        var valueList = reservationManager.GetListApprovalReservation(values.Id);
+        var valueList = reservationManager.GetListWithReservationByWaitApproval(values.Id);
         return View(valueList);
     }
     [HttpGet]
