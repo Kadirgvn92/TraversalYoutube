@@ -17,6 +17,11 @@ public class ReservationManager : IReservationService
         _reservationDal = reservationDal;
     }
 
+    public List<Reservation> GetAllReservation(int id)
+    {
+        return _reservationDal.GetAllReservation(id); 
+    }
+
     public List<Reservation> GetListWithReservationByAccepted(int id)
     {
         return _reservationDal.GetListWithReservationByAccepted(id);    

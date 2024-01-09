@@ -12,6 +12,12 @@ using TraversalYoutube.EntityLayer.Concrete;
 namespace TraversalYoutube.DataAccessLayer.EntityFramework;
 public class EfReservationDal : GenericRepository<Reservation>, IReservationDal
 {
+    public List<Reservation> GetAllReservation(int id)
+    {
+        using var context = new Context();
+        return context.Reservations.Include(x => x.Destination).Where(x => x.AppUserId == id).ToList();
+    }
+
     public List<Reservation> GetListWithReservationByAccepted(int id)
     {
         using var context = new Context();
