@@ -35,4 +35,12 @@ public class EfReservationDal : GenericRepository<Reservation>, IReservationDal
         using var context = new Context();  
         return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Onay Bekliyor" && x.AppUserId == id).ToList();
     }
-}
+
+    public List<Reservation> GetAll()
+    {
+        using var context = new Context();
+        return context.Reservations.Include(x => x.Destination)
+                                   .Include(x => x.AppUser)                        
+                                   .ToList();
+    }
+ }

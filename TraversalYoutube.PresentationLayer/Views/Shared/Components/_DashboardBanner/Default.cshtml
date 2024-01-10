@@ -1,0 +1,66 @@
+﻿@model List<Reservation>
+
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Son Rezervasyonlar</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th>Misafir Bilgileri</th>
+                            <th>Rota</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Take(4)) // burada ilk 4 tanesini göstermek için yapıyoruz
+                        {
+                            <tr>
+                                <td>@item.AppUser.Name @item.AppUser.Surname</td>
+                                <td>@item.Destination.City</td>
+                                <td>
+                                    @if (item.Status == "Tamamlandı")
+                                    {
+                                        <span class="badge badge-primary">@item.Status</span>
+                                    }
+                                    else if (item.Status == "Onay Bekliyor")
+                                    {
+                                        <span class="badge badge-danger">@item.Status</span>
+                                    }
+                                    else if (item.Status == "Onaylandı")
+                                    {
+                                        <span class="badge badge-success">@item.Status</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-warning">@item.Status</span>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer text-center bg-warning text-primary">
+            <a href="javascript:">Tüm Rezervasyonları Görüntüle</a>
+        </div>
+        <!-- /.card-footer -->
+    </div>
+</div>
