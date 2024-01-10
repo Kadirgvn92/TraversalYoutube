@@ -1,7 +1,7 @@
 ﻿@model Destination
 
 @{
-    ViewData["Title"] = "AddDestination";
+    ViewData["Title"] = "UpdateDestination";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -20,6 +20,7 @@
                 <div class="card-body p-3">
                     <hr class="horizontal gray-light my-0">
                     <form method="post" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="DestinationID">
                         <div class="form-group">
                             <label>Rota</label>
                             <input type="text" class="form-control form-control-s" asp-for="City" placeholder="Rotayı girin">

@@ -24,7 +24,7 @@ public class DestinationManager : IDestinationService
 
     public void TDelete(Destination entity)
     {
-        throw new NotImplementedException();
+       _destinationDal.Delete(entity);
     }
 
     public List<Destination> TGetAll()
@@ -39,6 +39,6 @@ public class DestinationManager : IDestinationService
 
     public void TUpdate(Destination entity)
     {
-        throw new NotImplementedException();
+        _destinationDal.Update(entity);
     }
 }

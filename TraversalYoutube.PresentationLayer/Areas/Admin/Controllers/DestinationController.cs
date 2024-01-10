@@ -2,6 +2,8 @@
 using TraversalYoutube.BusinessLayer.Concrete;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
 using TraversalYoutube.EntityLayer.Concrete;
+using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
+using TraversalYoutube.PresentationLayer.Areas.Member.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
@@ -22,8 +24,8 @@ public class DestinationController : Controller
     [HttpPost]
     public IActionResult AddDestination(Destination destination)
     {
-        destinationManager.TAdd(destination);
 
+        destinationManager.TAdd(destination);
         return RedirectToAction("Index");
     }
     public IActionResult DeleteDestination(int id)

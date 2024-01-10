@@ -28,14 +28,14 @@
 
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Şehir</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Rota</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Gün / Gece</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Fiyat</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Fiyat</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Açıklama</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder  text-center">Kapasite</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Sitede Gör</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Sil</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Güncelle</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sitede Gör</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Güncelle</th>
                                     </tr>
                                 </thead>
                                 <tbody class="border-top">
@@ -48,32 +48,32 @@
                                                         <img src="@item.Image" class="rounded-circle me-3" style="width:100px;height:100px;" alt="user1">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center ml-4">
-                                                        <h6 class="mb-0 font-weight-bold  text-sm">@item.City</h6>
+                                                        <h6 class="mb-0 font-weight-bold  text-s">@item.City</h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="align-middle">
-                                                <p class="text-sm font-weight-bold mb-0">@item.DayNight</p>
+                                                <p class="text-s font-weight-bold mb-0">@item.DayNight</p>
                                             </td>
                                             <td class="align-middle ">
-                                                <span class="text-sm font-weight-bold mb-0">@item.Price</span>
+                                                <div class="bg-success text-lg rounded text-center"><span>@item.Price</span></div>
                                             </td>
                                             <td class="align-middle">
-                                                <span class=" text-sm font-weight-bold mb-0">@item.Description</span>
+                                                <span class=" text-s font-weight-bold mb-0">@item.Description</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="#" class="text-secondary font-weight-bold text-sm text-center">
+                                                <span class="text-secondary font-weight-bold text-lg mb-0 text-center">
                                                     @item.Capacity
-                                                </a>
+                                                </span>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="#" class="btn btn-outline-info ">Sidete Gör</a>
+                                                <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info ">Sitede Gör</a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="#" class="btn btn-outline-danger ">Sil</a>
+                                                <a href="/Admin/Destination/DeleteDestination/@item.DestinationID"  class="btn btn-outline-danger ">Sil</a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="#" class="btn btn-outline-success ">Güncelle</a>
+                                                <a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn btn-outline-success ">Güncelle</a>
                                             </td>
                                         </tr>
                                     }
@@ -81,7 +81,7 @@
                             </table>
                             <br />
                             <div>
-                                <a href="/Education/CreateEducation/" class="btn btn-primary">Yeni Rota Oluşturun</a>
+                                <a href="/Destination/AddDestination/" class="btn btn-primary">Yeni Rota Oluşturun</a>
                             </div>
                             
                         </div>
