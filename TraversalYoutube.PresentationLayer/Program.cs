@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.ComponentModel;
 using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.BusinessLayer.Concrete;
+using TraversalYoutube.BusinessLayer.Container;
 using TraversalYoutube.DataAccessLayer.Abstract;
 using TraversalYoutube.DataAccessLayer.Concrete;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
@@ -18,14 +20,7 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Contex
     .AddErrorDescriber<CustomIdentityValidator>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<ICommentService, CommentManager>();
-builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-
-builder.Services.AddScoped<IDestinationService, DestinationManager>();
-builder.Services.AddScoped<IDestinationDal, EfDestinationDal>();
-
-builder.Services.AddScoped<IAppUserService, AppUserManager>();
-builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
+builder.Services.ContainerDependencies();
 
 builder.Services.AddMvc(config =>
 {

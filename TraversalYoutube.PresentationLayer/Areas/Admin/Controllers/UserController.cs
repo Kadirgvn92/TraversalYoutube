@@ -8,10 +8,12 @@ namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 public class UserController : Controller
 {
     private readonly IAppUserService _appUserService;
+    private readonly IReservationService _reservationService;
 
-    public UserController(IAppUserService appUserService)
+    public UserController(IAppUserService appUserService, IReservationService reservationService)
     {
         _appUserService = appUserService;
+        _reservationService = reservationService;
     }
 
     public IActionResult Index()
@@ -43,5 +45,10 @@ public class UserController : Controller
     {
         _appUserService.TGetAll();
         return View();
+    }
+    public IActionResult ReservationUser(int id)
+    {
+        var values = _reservationService.GetListWithReservationByPrevious(id);
+        return View(values);
     }
 }

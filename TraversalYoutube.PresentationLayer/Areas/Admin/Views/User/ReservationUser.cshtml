@@ -1,0 +1,77 @@
+﻿
+
+@model List<Reservation>
+
+@{
+    ViewData["Title"] = "ReservationUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Kullanıcının Geçmiş Rezervasyonları</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Geçmiş Rezervasyon Ekranı</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Kullanıcının geçmişte yapmış olduğu rezervasyonları bu sayfada görüntüleyebilirsiniz.
+                            </div>
+                            <br />
+                            <table class="table align-items-center mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Ad Soyad</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Rota</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Kişi Sayısı</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Tarih</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Detaylar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td width="250px">
+                                                <div class="d-flex flex-column align-items-center align-self-center mb-3 px-2 py-1">
+                                                    <div class="mt-2">
+                                                        <h6 class="mb-0 text-s">@item.AppUser.Name @item.AppUser.Surname</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-s  mb-0">@item.Destination.City</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-s  mb-0">@item.PersonCount</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class=" text-s mb-0">@item.ReservationDate.Date.ToShortDateString()</span>
+                                            </td>
+                                            <td width="100px" class="align-middle">
+                                                <a href="#" class="btn btn-outline-info ">Detaylar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <br />
+                            <div>
+                                <a href="/Login/SignUp/" class="btn btn-primary">Yeni Kullanıcı Oluşturun</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
