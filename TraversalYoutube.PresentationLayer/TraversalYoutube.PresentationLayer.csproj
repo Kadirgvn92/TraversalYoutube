@@ -54,6 +54,9 @@
     <None Include="wwwroot\AdminLTE-3.2.0\.github\workflows\codeql.yml" />
     <None Include="wwwroot\AdminLTE-3.2.0\.github\workflows\docs.yml" />
     <None Include="wwwroot\AdminLTE-3.2.0\.github\workflows\lint.yml" />
+    <None Include="wwwroot\simple-404-template-master\assets\images\404.svg" />
+    <None Include="wwwroot\simple-404-template-master\LICENSE" />
+    <None Include="wwwroot\simple-404-template-master\README.md" />
   </ItemGroup>
 
 </Project>
