@@ -1,7 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Filters;
+using TraversalYoutube.BusinessLayer.Abstract;
+using TraversalYoutube.BusinessLayer.Concrete;
+using TraversalYoutube.DataAccessLayer.Abstract;
 using TraversalYoutube.DataAccessLayer.Concrete;
+using TraversalYoutube.DataAccessLayer.EntityFramework;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Models;
 
@@ -13,6 +17,9 @@ builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>()
     .AddErrorDescriber<CustomIdentityValidator>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ICommentService, CommentManager>();
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
 
 builder.Services.AddMvc(config =>
 {
@@ -45,6 +52,14 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.UseEndpoints(endpoints =>
 {

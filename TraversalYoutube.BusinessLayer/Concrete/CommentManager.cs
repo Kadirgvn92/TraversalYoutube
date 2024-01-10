@@ -24,17 +24,17 @@ public class CommentManager : ICommentService
 
     public void TDelete(Comment entity)
     {
-        throw new NotImplementedException();
+        _commentDal.Delete(entity);
     }
 
     public List<Comment> TGetAll()
     {
-        throw new NotImplementedException();
+        return _commentDal.GetAll();
     }
 
     public Comment TGetByID(int id)
     {
-        throw new NotImplementedException();
+       return _commentDal.GetByID(id);
     }
     public List<Comment> TGetDestinationByID (int id)
     {
@@ -43,6 +43,6 @@ public class CommentManager : ICommentService
 
     public void TUpdate(Comment entity)
     {
-        throw new NotImplementedException();
+       _commentDal.Update(entity);
     }
 }

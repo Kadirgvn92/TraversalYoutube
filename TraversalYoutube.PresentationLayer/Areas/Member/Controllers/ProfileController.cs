@@ -52,7 +52,6 @@ public class ProfileController : Controller
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                
                 return RedirectToAction("Index", "Profile", new { area = "Member" });
             }
             else

@@ -1,9 +1,9 @@
-﻿@model List<Reservation>
+﻿@model List<Destination>
 
 <div class="col-md-6">
     <div class="card">
         <div class="card-header border-transparent">
-            <h3 class="card-title">Son Rezervasyonlar</h3>
+            <h3 class="card-title">Rotalar</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -20,35 +20,25 @@
                 <table class="table m-0">
                     <thead>
                         <tr>
-                            <th>Misafir Bilgileri</th>
-                            <th>Rota</th>
-                            <th>Durum</th>
+                            <th class="text-center">Rota</th>
+                            <th>Gün / Gece </th>
+                            <th>Rota Bilgileri</th>
+                            <th>Fiyat</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model.Take(4)) // burada ilk 4 tanesini göstermek için yapıyoruz
                         {
                             <tr>
-                                <td>@item.AppUser.Name @item.AppUser.Surname</td>
-                                <td>@item.Destination.City</td>
-                                <td>
-                                    @if (item.Status == "Tamamlandı")
-                                    {
-                                        <span class="badge badge-primary text-s">@item.Status</span>
-                                    }
-                                    else if (item.Status == "Onay Bekliyor")
-                                    {
-                                        <span class="badge badge-warning text-s">@item.Status</span>
-                                    }
-                                    else if (item.Status == "Onaylandı")
-                                    {
-                                        <span class="badge badge-success text-s">@item.Status</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge badge-warning text-s">@item.Status</span>
-                                    }
-
+                                <td class="align-middle">
+                                    <img class="rounded-circle" src="@item.Image" width="80px" height="80px">
+                                    &nbsp;
+                                    <span>@item.City</span>
+                                </td>
+                                <td class="align-middle">@item.DayNight</td>
+                                <td class="align-middle">@item.Description</td>
+                                <td class="align-middle">
+                                    <span class="badge badge-success text-md">@item.Price</span>
                                 </td>
                             </tr>
                         }

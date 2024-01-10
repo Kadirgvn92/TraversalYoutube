@@ -1,0 +1,66 @@
+﻿
+@model List<Comment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Rotalar Ekranı</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Rotalar</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Rotalar kısmını bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
+                            </div>
+                            <br />
+                            <table class="table align-items-center mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder">Kullanıcı</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Rota</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Yorumu</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Tarih</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="align-middle" width="300px">
+                                                <p class="text-s  mb-0">@item.CommentUser</p>
+                                            </td>
+                                            <td class="align-middle" width="200px">
+                                                <span class=" text-s  mb-0">@item.Destination.City</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class=" text-s mb-0">@item.CommentContent</span>
+                                            </td>
+                                            <td class="align-middle text-center" width="200px">
+                                                <span class=" text-s  mb-0">@(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy"))</span>
+                                            </td>
+                                            <td width="60px" class="align-middle">
+                                                <a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger ">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
