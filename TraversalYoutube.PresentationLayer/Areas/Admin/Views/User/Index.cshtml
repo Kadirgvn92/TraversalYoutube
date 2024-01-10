@@ -1,0 +1,90 @@
+﻿
+@model List<AppUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Kullanıcılar</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Kullanıcı Görüntüleme Ekranı</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Kullanıcıları bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
+                            </div>
+                            <br />
+                            <table class="table align-items-center mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Ad Soyad</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Kullanıcı Adı</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">E-mail</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Telefon Numarası</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Düzenle</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Yorumlar</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Tur Geçmişi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td width="250px">
+                                                <div class="d-flex flex-column align-items-center align-self-center mb-3 px-2 py-1">
+                                                    <div class="">
+                                                        <img src="/userimages/@item.ImageUrl" class="rounded-circle me-3" style="width:80px;height:80px;" alt="user1">
+                                                    </div>
+                                                    <div class="mt-2">
+                                                        <h6 class="mb-0   text-s">@item.Name @item.Surname</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle" >
+                                                <p class="text-s  mb-0">@item.UserName</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-s  mb-0">@item.Email</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class=" text-s mb-0">@item.PhoneNumber</span>
+                                            </td>
+                                            <td width="100px" class="align-middle">
+                                                <a href="/Admin/User/UpdateUser/@item.Id" class="btn btn-outline-info ">Düzenle</a>
+                                            </td>
+                                            <td width="60px" class="align-middle">
+                                                <a href="/Admin/User/DeleteUser/@item.Id" class="btn btn-outline-danger ">Sil</a>
+                                            </td>
+                                            <td width="80px" class="align-middle">
+                                                <a href="/Admin/User/Comment/@item.Id" class="btn btn-outline-success ">Yorumlar</a>
+                                            </td>
+                                            <td width="150px" class="align-middle">
+                                                <a href="/Admin/User/Reservation/@item.Id" class="btn btn-outline-secondary ">Tur Geçmişi</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <br />
+                            <div>
+                                <a href="/Destination/AddDestination/" class="btn btn-primary">Yeni Rota Oluşturun</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
