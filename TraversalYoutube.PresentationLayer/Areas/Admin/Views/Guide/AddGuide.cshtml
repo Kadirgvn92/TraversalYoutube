@@ -20,32 +20,26 @@
                 </div>
                 <div class="card-body p-3">
                     <hr class="horizontal gray-light my-0">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" >
                         <div class="form-group">
-                            <label>Rota</label>
-                            <input type="text" class="form-control form-control-s" asp-for="Name" placeholder="Rotayı girin">
-                        </div>
-                        <div class="form-group">
-                            <label>Kaç Gece / Kaç Gün ?</label>
-                            <input type="text" class="form-control form-control-s" asp-for="Description" placeholder="Gün / Gece bilgisini girin">
-                        </div>
-                        <div class="form-group">
-                            <label>Fiyat</label>
-                            <input type="text" class="form-control form-control-s" asp-for="TwitterUrl" placeholder="Rota fiyatını girin">
-                        </div>
-                        <div class="form-group">
-                            <label>Kapasite</label>
-                            <input type="text" class="form-control form-control-s" asp-for="InstagramUrl" placeholder="Rota kapasitesini girin">
+                            <label>Ad Soyad</label>
+                            <input type="text" class="form-control form-control-s" asp-for="Name" placeholder="Rehber ad soyad girin">
+                            <span asp-validation-for="Name" ></span>
                         </div>
                         <div class="form-group">
                             <label>Açıklama</label>
-                            <input type="text" class="form-control form-control-s" asp-for="Status" placeholder="Rota açıklamasını girin">
+                            <input type="text" class="form-control form-control-s" asp-for="Description" placeholder="Rehber açıklaması girin">
+                        </div>
+                        <span asp-validation-for="Description"></span>
+                        <div class="form-group">
+                            <label>Twitter Url</label>
+                            <input type="text" class="form-control form-control-s" asp-for="TwitterUrl" placeholder="Rehber Twitter Url girin">
                         </div>
                         <div class="form-group">
-                            <label>Rota Resmi</label>
-                            <input type="text" class="form-control form-control-s" asp-for="Image" placeholder="Resim yolunu girin girin">
+                            <label>Instagram Url</label>
+                            <input type="text" class="form-control form-control-s" asp-for="InstagramUrl" placeholder="Rehber Instagram Url girin">
                         </div>
-                        <button type="submit" class="btn btn-primary">Rota Oluştur</button>
+                        <button type="submit" class="btn btn-primary">Rehber Ekle</button>
                     </form>
                 </div>
             </div>

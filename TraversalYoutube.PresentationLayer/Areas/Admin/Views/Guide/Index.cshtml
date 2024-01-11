@@ -30,7 +30,8 @@
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Ad Soyad</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Açıklama </th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Durum</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Düzenle</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Sil</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Düzenle</th>
                                     </tr>
                                 </thead>
                                 <tbody class="border-top">
@@ -63,8 +64,11 @@
                                                     <button href="#" class="btn btn-toggle btn-outline-success">Aktif Yap</button>
                                                 </td>
                                             }
-                                            <td width="100px" class="align-middle">
-                                                <a href="/Admin/Guide/EditGuide/@item.GuideID" class="btn btn-outline-info ">Düzenle</a>
+                                            <td width="150px" class="align-middle">
+                                                <a href="/Admin/Guide/DeleteGuide/@item.GuideID" class="btn bg-gradient-danger ">Sil</a>
+                                            </td>
+                                            <td width="150px" class="align-middle">
+                                                <a href="/Admin/Guide/EditGuide/@item.GuideID" class="btn bg-gradient-info ">Düzenle</a>
                                             </td>
                                         </tr>
                                     }
@@ -72,7 +76,7 @@
                             </table>
                             <br />
                             <div>
-                                <a href="/Guide/AddGuide/" class="btn btn-primary">Yeni Rehber Ekleyin</a>
+                                <a href="/Admin/Guide/AddGuide" class="btn btn-primary">Yeni Rehber Ekleyin</a>
                             </div>
 
                         </div>
