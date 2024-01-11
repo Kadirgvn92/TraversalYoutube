@@ -10,10 +10,14 @@ using TraversalYoutube.DataAccessLayer.Concrete;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+var _loggerer = new LoggerConfiguration().MinimumLevel.Error()   //bu kod parçasýnda serilog.aspnetcore indirdikten sonra yazdýk bu þekilde çalýþýyor 
+    .WriteTo.File("C:\\Users\\MSI\\Desktop\\Yazýlým\\Repo\\TraversalYoutube\\TraversalYoutube.PresentationLayer\\wwwroot\\Logs\\Logger.log",
+    rollingInterval:RollingInterval.Day).CreateLogger();
+builder.Logging.AddSerilog(_loggerer);
 
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>()

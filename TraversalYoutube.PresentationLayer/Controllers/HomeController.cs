@@ -14,11 +14,13 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        _logger.LogInformation("Index sayfası çağırıldı");
         return View();
     }
 
     public IActionResult Privacy()
     {
+        _logger.LogInformation($"Login sayfası çağırıldı");
         return View();
     }
 
