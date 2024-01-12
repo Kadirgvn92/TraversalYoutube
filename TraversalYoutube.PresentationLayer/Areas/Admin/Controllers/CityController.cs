@@ -1,11 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using TraversalYoutube.BusinessLayer.Abstract;
+using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 [Area("Admin")]
 public class CityController : Controller
 {
+    private readonly IDestinationService _destinationService;
+
+    public CityController(IDestinationService destinationService)
+    {
+        _destinationService = destinationService;
+    }
     public IActionResult Index()
     {
         return View();
@@ -13,29 +21,22 @@ public class CityController : Controller
 
     public IActionResult CityList()
     {
-        var jsonCity = JsonConvert.SerializeObject(cities);
+        var jsonCity = JsonConvert.SerializeObject(_destinationService.TGetAll());
         return Json(jsonCity);
     }
-
-    public static List<City> cities = new List<City>()
+    [HttpPost]
+    public IActionResult AddCityDestination(Destination destination)
     {
-        new City
-        {
-            CityID = 1,
-            CityName = "Üsküp",
-            CityCountry = "Makedonya"
-        },
-        new City
-        {
-            CityID = 2,
-            CityName = "Roma",
-            CityCountry = "İtalya"
-        },
-        new City
-        {
-            CityID = 3,
-            CityName = "Londra",
-            CityCountry = "İngiltere"
-        }
-    };
+        destination.Status = true;
+        _destinationService.TAdd(destination);
+        var values = JsonConvert.SerializeObject(destination);
+        return Json(values);
+    }
+
+    public IActionResult GetByID(int id)
+    {
+        var values = _destinationService.TGetByID(id);
+        var jsonValues = JsonConvert.SerializeObject(values);
+        return Json(jsonValues);
+    }
 }

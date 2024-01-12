@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -7,16 +6,40 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <div class="content-wrapper">
-
-    <h1>Şehir / Ülke İşlemleri</h1>
-    <br />
-    <button type="button" id="btngetlist" class="btn bg-gradient-info">Şehir Listesi</button>
+    <div class="m-3">
+        <h2>Şehir / Ülke İşlemleri</h2>
+        <br />
+        <button type="button" id="btngetlist" class="btn bg-gradient-success">Şehir Listesi</button>
+        &nbsp;
+        <button type="button" id="btnaddcity" class="btn bg-gradient-primary">Şehir Ekle</button>
+        &nbsp;
+        <button type="button" id="btngetbyid" class="btn bg-gradient-warning">Şehir Getir</button>
 
         <br />
-        <div id="cityList">
+        <div id="cityList" class="m-3">
             Buraya şehir isimleri gelecek
         </div>
+        <br />
+        <div class="row m-2">
+            <input type="text" id="txtid" placeholder="Şehir ID  değerini giriniz" class="form-control mb-3" />
+        </div>
+        <div id="destinationlistbyid">
+
+        </div>
+        <br />
+        <div class="row m-2">
+            <input type="text" id="txtcity" placeholder="Şehir Adını giriniz" class="form-control mb-3" />
+            <input type="text" id="txtdaynight" placeholder="Gün / Gece sayısını giriniz" class="form-control mb-3" />
+            <input type="text" id="txtprice" placeholder="Fiyat" class="form-control mb-3" />
+            <input type="text" id="txtcapacity" placeholder="Konaklayacak kişi sayısını giriniz" class="form-control mb-3" />
+        </div>
+    </div>
+
+
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     $('#btngetlist').click(function () {
@@ -28,12 +51,55 @@
             success: function (func) {
                 let w = jQuery.parseJSON(func);
                 console.log(w);
-                let tablehtml = "<table class=table table-bordered> <tr><th> Şehir ID</th><th> Şehir Adı </th><th>Ülke Adı</th></tr>";
+                let tablehtml = "<table class=table table-bordered> <tr><th> Rota </th><th> Gün / Gece </th><th>Fiyat</th></tr>";
                 $.each(w, (index, value) => {
-                    tablehtml += `<tr><td>${value.CityID}</td> <td>${value.CityName}</td> <td>${value.CityCountry}</td></tr> `
+                    tablehtml += `<tr><td>${value.City}</td> <td>${value.DayNight}</td> <td>${value.Price}</td></tr> `
                 });
                 tablehtml += "</table>";
                 $("#cityList").html(tablehtml);
+            }
+        });
+    });
+
+    $("#btnaddcity").click(function () {
+        let cityvalues = {
+            city: $("#txtcity").val(),
+            DayNight: $("#txtdaynight").val(),
+            Price: $("#txtprice").val(),
+            Capacity: $("#txtcapacity").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/City/AddCityDestination/",
+            data: cityvalues,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Şehir - Rota başarılı bir şekilde eklendi.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        });
+    });
+
+    $("#btngetbyid").click(x => {
+        let id = $("#txtid").val();
+
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "Get",
+            url: "/Admin/City/GetByID/",
+            data: { DestinationID: id },
+            success: function (fun2) {
+                let result = jQuery.parseJSON(fun2);
+                console.log(result);
+                let htmlstr = `<table class=table table-bordered> <tr><th> Rota </th><th> Gün / Gece </th><th>Fiyat</th></tr><tr><td>${result.City}</td><td>${result.DayNight}</td><td>                     ${result.Capacity}</td></td></tr></table>`;
+                $("#destinationlistbyid").html(htmlstr);
             }
         });
     });
