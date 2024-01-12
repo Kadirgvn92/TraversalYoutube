@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/TraversalYoutube.PresentationLayer/Models/MailPass.cs
+/TraversalYoutube.PresentationLayer/Gitignore/MailPass.cs
