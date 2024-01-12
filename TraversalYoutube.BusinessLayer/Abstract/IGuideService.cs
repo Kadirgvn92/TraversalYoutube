@@ -8,4 +8,6 @@ using TraversalYoutube.EntityLayer.Concrete;
 namespace TraversalYoutube.BusinessLayer.Abstract;
 public interface IGuideService : IGenericService<Guide>
 {
+    void TChangeToTrueByGUide(int id);
+    void TChangeToFalseByGuide(int id);
 }

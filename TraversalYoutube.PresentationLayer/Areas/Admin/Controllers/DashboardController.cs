@@ -4,7 +4,9 @@ using TraversalYoutube.DataAccessLayer.Concrete;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
+
 [Area("Admin")]
+[Route("Admin/[controller]/[action]/{id?}")]
 public class DashboardController : Controller
 {
     Context context = new Context();

@@ -5,6 +5,8 @@ using TraversalYoutube.EntityLayer.Concrete;
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
 [Area("Admin")]
+
+[Route("Admin/[controller]/[action]/{id?}")]
 public class UserController : Controller
 {
     private readonly IAppUserService _appUserService;
@@ -25,7 +27,7 @@ public class UserController : Controller
     {
         var values = _appUserService.TGetByID(id);
         _appUserService.TDelete(values);
-        return RedirectToAction("Index","Dashboard");
+        return RedirectToAction("Index","Dashboard",new { area = "Admin" });
     }
     [HttpGet]
     public IActionResult EditUser(int id)
@@ -38,7 +40,7 @@ public class UserController : Controller
     public IActionResult EditUser(AppUser appUser)
     {
         _appUserService.TUpdate(appUser);
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
     }
     
     public IActionResult CommentUser(int id)

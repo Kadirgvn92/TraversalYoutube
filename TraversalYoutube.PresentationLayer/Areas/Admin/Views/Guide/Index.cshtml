@@ -55,13 +55,13 @@
                                             @if (item.Status == true)
                                             {
                                                 <td class="align-middle">
-                                                    <button href="#" class="btn btn-toggle btn-outline-warning">Pasif Yap</button>
+                                                    <a href="/Admin/Guide/ChangeToFalse/@item.GuideID" class="btn btn-toggle btn-outline-warning">Pasif Yap</a>
                                                 </td>
                                             }
                                             else
                                             {
                                                 <td class="align-middle">
-                                                    <button href="#" class="btn btn-toggle btn-outline-success">Aktif Yap</button>
+                                                    <a href="/Admin/Guide/ChangeToTrue/@item.GuideID" class="btn btn-toggle btn-outline-success">Aktif Yap</a>
                                                 </td>
                                             }
                                             <td width="150px" class="align-middle">

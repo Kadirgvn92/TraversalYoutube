@@ -22,6 +22,16 @@ public class GuideManager : IGuideService
        _guideDal.Insert(entity);
     }
 
+    public void TChangeToFalseByGuide(int id)
+    {
+        _guideDal.ChangeToFalseByGuide(id);
+    }
+
+    public void TChangeToTrueByGUide(int id)
+    {
+        _guideDal.ChangeToTrueByGUide(id);
+    }
+
     public void TDelete(Guide entity)
     {
         _guideDal.Delete(entity);

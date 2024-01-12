@@ -3,10 +3,13 @@ using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.BusinessLayer.ValidationRules;
 using TraversalYoutube.EntityLayer.Concrete;
 using FluentValidation.Results;
+using System.Linq.Expressions;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Route("Admin/[controller]/[action]/{id?}")]
+
 public class GuideController : Controller
 {
     private readonly IGuideService _guideService;
@@ -15,17 +18,18 @@ public class GuideController : Controller
     {
         _guideService = guideService;
     }
-
     public IActionResult Index()
     {
         var values = _guideService.TGetAll();
         return View(values);
     }
+
     [HttpGet]
     public IActionResult AddGuide()
     {
         return View();
     }
+
     [HttpPost]
     public IActionResult AddGuide(Guide guide) 
     {
@@ -46,7 +50,6 @@ public class GuideController : Controller
             }
         }
         return View();  
-        
     }
 
     public IActionResult DeleteGuide(int id)
@@ -55,22 +58,29 @@ public class GuideController : Controller
         _guideService.TDelete(values);
         return RedirectToAction("Index","Guide", new { area = "Admin" });
     }
+
     [HttpGet]
     public IActionResult EditGuide(int id)
     {
         var values = _guideService.TGetByID(id);
         return View(values);
     }
+
     [HttpPost]
     public IActionResult EditGuide(Guide guide)
     {
         _guideService.TUpdate(guide);
-        return RedirectToAction("Index");   
+        return RedirectToAction("Index", "Guide", new { area = "Admin" });
     }
-    public IActionResult ChangeStatus(int id)
+    public IActionResult ChangeToTrue(int id)
     {
-
-        return RedirectToAction("Index");   
+        _guideService.TChangeToTrueByGUide(id);
+        return RedirectToAction("Index","Guide", new { area = "Admin" } );
+    }
+    public IActionResult ChangeToFalse(int id)
+    {
+        _guideService.TChangeToFalseByGuide(id);
+        return RedirectToAction("Index", "Guide", new { area = "Admin" });
     }
 
 }

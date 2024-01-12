@@ -1,12 +1,21 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office2010.Ink;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
+using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.DataAccessLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Models;
 
 namespace TraversalYoutube.PresentationLayer.Controllers;
 public class ExcelController : Controller
 {
+    private readonly IExcelService _excelService;
+
+    public ExcelController(IExcelService excelService)
+    {
+        _excelService = excelService;
+    }
+
     public IActionResult Index()
     {
         return View();  
@@ -27,22 +36,7 @@ public class ExcelController : Controller
 
     public IActionResult StaticExcelReport()
     {
-        ExcelPackage excel = new ExcelPackage();
-        var workSheet = excel.Workbook.Worksheets.Add("Sayfa-1");
-        workSheet.Cells[1, 1].Value = "Rota";
-        workSheet.Cells[1, 2].Value = "Rehber";
-        workSheet.Cells[1, 3].Value = "Kontenjan";
-
-        workSheet.Cells[2, 1].Value = "Gürcistan/Batum";
-        workSheet.Cells[2, 2].Value = "Can Yıldız";
-        workSheet.Cells[2, 3].Value = "50";
-
-        workSheet.Cells[3, 1].Value = "Sırbistan";
-        workSheet.Cells[3, 2].Value = "Gamze ULAŞ";
-        workSheet.Cells[3, 3].Value = "35";
-
-        var bytes = excel.GetAsByteArray();
-        return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "dosya1.xlsx");
+        return File(_excelService.ExcelList(DestinationList()), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "NewExcel.xlsx");
     }
 
     public IActionResult DestinationExcelReport()

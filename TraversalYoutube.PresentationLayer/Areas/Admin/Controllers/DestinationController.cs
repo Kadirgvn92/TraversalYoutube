@@ -8,7 +8,9 @@ using TraversalYoutube.PresentationLayer.Areas.Member.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
+
 [Area("Admin")]
+[Route("Admin/[controller]/[action]/{id?}")]
 public class DestinationController : Controller
 {
     private readonly IDestinationService _destinationService;
@@ -31,15 +33,18 @@ public class DestinationController : Controller
     [HttpPost]
     public IActionResult AddDestination(Destination destination)
     {
+        destination.Image = "/userimages/tour.png";
+        destination.Image2 = "/Traversal-Liberty/assets/images/banner1.jpg";
+        destination.CoverImage = "/Traversal-Liberty/assets/images/banner4.jpg";
 
         _destinationService.TAdd(destination);
-        return RedirectToAction("Index");
+        return RedirectToAction("Index","Destination", new { area = "Admin"});
     }
     public IActionResult DeleteDestination(int id)
     {
         var values = _destinationService.TGetByID(id);
         _destinationService.TDelete(values);
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "Destination", new { area = "Admin" });
     }
     [HttpGet]
     public IActionResult UpdateDestination(int id)
@@ -51,6 +56,6 @@ public class DestinationController : Controller
     public IActionResult UpdateDestination(Destination destination)
     {
         _destinationService.TUpdate(destination);
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "Destination", new { area = "Admin" });
     }
 }

@@ -5,6 +5,7 @@ using TraversalYoutube.DataAccessLayer.EntityFramework;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 [Area("Admin")]
+[Route("Admin/[controller]/[action]/{id?}")]
 public class CommentController : Controller
 {
     private readonly ICommentService _commentService;
@@ -25,6 +26,6 @@ public class CommentController : Controller
     {
         var values = _commentService.TGetByID(id);
         _commentService.TDelete(values);
-        return RedirectToAction("Index", "Profile", new { area = "Member" });
+        return RedirectToAction("Index", "Profile", new { area = "Admin" });
     }
 }
