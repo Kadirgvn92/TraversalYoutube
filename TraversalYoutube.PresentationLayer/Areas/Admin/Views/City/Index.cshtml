@@ -14,6 +14,8 @@
         <button type="button" id="btnaddcity" class="btn bg-gradient-primary">Şehir Ekle</button>
         &nbsp;
         <button type="button" id="btngetbyid" class="btn bg-gradient-warning">Şehir Getir</button>
+        &nbsp;
+        <button type="button" id="btndelete" class="btn bg-gradient-danger">Şehir Sil</button>
 
         <br />
         <div id="cityList" class="m-3">
@@ -23,8 +25,10 @@
         <div class="row m-2">
             <input type="text" id="txtid" placeholder="Şehir ID  değerini giriniz" class="form-control mb-3" />
         </div>
+        <div class="row m-2">
+            <input type="text" id="txtdelete" placeholder="Silmek istediğiniz Şehir ID değerini giriniz" class="form-control mb-3" />
+        </div>
         <div id="destinationlistbyid">
-
         </div>
         <br />
         <div class="row m-2">
@@ -100,6 +104,25 @@
                 console.log(result);
                 let htmlstr = `<table class=table table-bordered> <tr><th> Rota </th><th> Gün / Gece </th><th>Fiyat</th></tr><tr><td>${result.City}</td><td>${result.DayNight}</td><td>                     ${result.Capacity}</td></td></tr></table>`;
                 $("#destinationlistbyid").html(htmlstr);
+            }
+        });
+    });
+
+    $("#btndelete").click(x => {
+        let id = $("#txtdelete").val();
+        $.ajax({
+            url: "/Admin/City/DeleteCity" + id,
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (fun3) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Şehir - Rota başarılı bir şekilde silindi.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         });
     });
