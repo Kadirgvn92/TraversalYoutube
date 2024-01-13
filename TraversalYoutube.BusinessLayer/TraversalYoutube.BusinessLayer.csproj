@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DTOLayer\TraversalYoutube.DTOLayer.csproj" />
     <ProjectReference Include="..\TraversalYoutube.DataAccessLayer\TraversalYoutube.DataAccessLayer.csproj" />
     <ProjectReference Include="..\TraversalYoutube.EntityLayer\TraversalYoutube.EntityLayer.csproj" />
   </ItemGroup>
