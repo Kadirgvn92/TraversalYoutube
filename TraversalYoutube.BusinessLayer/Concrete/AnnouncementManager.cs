@@ -11,6 +11,12 @@ namespace TraversalYoutube.BusinessLayer.Concrete;
 public class AnnouncementManager : IAnnouncementService
 {
     private readonly IAnnouncementDal _announcementDal;
+
+    public AnnouncementManager(IAnnouncementDal announcementDal)
+    {
+        _announcementDal = announcementDal;
+    }
+
     public void TAdd(Announcement entity)
     {
         _announcementDal.Insert(entity);

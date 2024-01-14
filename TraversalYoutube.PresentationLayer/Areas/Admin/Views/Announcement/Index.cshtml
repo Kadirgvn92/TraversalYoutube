@@ -1,8 +1,74 @@
 ﻿
+@model List<AnnouncementListViewModel>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
 
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Duyurular Ekranı</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Duyurular</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Duyurular kısmını bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
+                            </div>
+                            <br />
+                            <table class="table align-items-center mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Başlık</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Açıklama</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sitede Gör</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td width="400px">
+                                                <div class="d-flex px-2 py-1">
+                                                    <h6 class="mb-0 text-s">@item.Title</h6>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-s mb-0">@item.Content</p>
+                                            </td>
+                                            <td width="120px" class="align-middle">
+                                                <a href="/Announcement/AnnouncementDetails/@item.ID" class="btn btn-outline-info ">Sitede Gör</a>
+                                            </td>
+                                            <td width="60px" class="align-middle">
+                                                <a href="/Admin/Announcement/DeleteAnnouncement/@item.ID" class="btn btn-outline-danger ">Sil</a>
+                                            </td>
+                                            <td width="80px" class="align-middle">
+                                                <a href="/Admin/Announcement/UpdateAnnouncement/@item.ID" class="btn btn-outline-success ">Güncelle</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <br />
+                            <div>
+                                <a href="/Admin/Announcement/AddAnnouncement/" class="btn btn-primary">Yeni Duyuru Oluşturun</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

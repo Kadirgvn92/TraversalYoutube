@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TraversalYoutube.DTOLayer.DTOs.AnnouncementDTOs;
 using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.BusinessLayer.ValidationRules;
-public class AnnouncementValidator : AbstractValidator<Announcement>
+public class AnnouncementValidator : AbstractValidator<AnnouncementAddDTO>
 {
     public AnnouncementValidator()
     {

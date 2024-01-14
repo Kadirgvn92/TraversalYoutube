@@ -1,16 +1,12 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System.ComponentModel;
-using TraversalYoutube.BusinessLayer.Abstract;
-using TraversalYoutube.BusinessLayer.Concrete;
+using Serilog;
+using System.Reflection;
 using TraversalYoutube.BusinessLayer.Container;
-using TraversalYoutube.DataAccessLayer.Abstract;
 using TraversalYoutube.DataAccessLayer.Concrete;
-using TraversalYoutube.DataAccessLayer.EntityFramework;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Models;
-using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +14,8 @@ var _loggerer = new LoggerConfiguration().MinimumLevel.Error()   //bu kod parças
     .WriteTo.File("C:\\Users\\MSI\\Desktop\\Yazýlým\\Repo\\TraversalYoutube\\TraversalYoutube.PresentationLayer\\wwwroot\\Logs\\Logger.log",
     rollingInterval:RollingInterval.Day).CreateLogger();
 builder.Logging.AddSerilog(_loggerer);
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>()
