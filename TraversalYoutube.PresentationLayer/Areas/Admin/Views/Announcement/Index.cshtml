@@ -1,10 +1,11 @@
-﻿
-@model List<AnnouncementListViewModel>
+﻿@model List<AnnouncementListDTO>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+
 
 
 <div class="content-wrapper">
@@ -48,13 +49,13 @@
                                                 <p class="text-s mb-0">@item.Content</p>
                                             </td>
                                             <td width="120px" class="align-middle">
-                                                <a href="/Announcement/AnnouncementDetails/@item.ID" class="btn btn-outline-info ">Sitede Gör</a>
+                                                <a href="/Announcement/AnnouncementDetails/@item.AnnouncementID" class="btn btn-outline-info ">Sitede Gör</a>
                                             </td>
                                             <td width="60px" class="align-middle">
-                                                <a href="/Admin/Announcement/DeleteAnnouncement/@item.ID" class="btn btn-outline-danger ">Sil</a>
+                                                <a href="/Admin/Announcement/DeleteAnnouncement/@item.AnnouncementID" class="btn btn-outline-danger ">Sil</a>
                                             </td>
                                             <td width="80px" class="align-middle">
-                                                <a href="/Admin/Announcement/UpdateAnnouncement/@item.ID" class="btn btn-outline-success ">Güncelle</a>
+                                                <a href="/Admin/Announcement/UpdateAnnouncement/@item.AnnouncementID" class="btn btn-outline-success ">Güncelle</a>
                                             </td>
                                         </tr>
                                     }
@@ -62,9 +63,8 @@
                             </table>
                             <br />
                             <div>
-                                <a href="/Admin/Announcement/AddAnnouncement/" class="btn btn-primary">Yeni Duyuru Oluşturun</a>
+                                <a href="/Admin/Announcement/AddAnnouncement" class="btn btn-primary">Yeni Duyuru Oluşturun</a>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -72,3 +72,4 @@
         </div>
     </div>
 </div>
+

@@ -1,13 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.DependencyInjection;
 using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.BusinessLayer.Concrete;
+using TraversalYoutube.BusinessLayer.ValidationRules;
 using TraversalYoutube.DataAccessLayer.Abstract;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
+using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.BusinessLayer.Container;
 public static class Extensions
@@ -24,7 +25,7 @@ public static class Extensions
         services.AddScoped<IAppUserDal, EfAppUserDal>();
 
         services.AddScoped<IReservationService, ReservationManager>();
-        services.AddScoped<IReservationDal,EfReservationDal>();
+        services.AddScoped<IReservationDal, EfReservationDal>();
 
         services.AddScoped<IGuideService, GuideManager>();
         services.AddScoped<IGuideDal, EfGuideDal>();
@@ -38,5 +39,15 @@ public static class Extensions
 
         services.AddScoped<IAnnouncementService, AnnouncementManager>();
         services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
+    }
+
+    public static void RegisterValidator(this IServiceCollection services)
+    {
+        services.AddFluentValidationAutoValidation(config =>
+        {
+            config.DisableDataAnnotationsValidation = true;
+        });
+
+        services.AddValidatorsFromAssemblyContaining<AnnouncementValidator>();
     }
 }

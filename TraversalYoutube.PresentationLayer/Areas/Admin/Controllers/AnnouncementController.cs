@@ -1,44 +1,80 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.DTOLayer.DTOs.AnnouncementDTOs;
 using TraversalYoutube.EntityLayer.Concrete;
-using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
-[AllowAnonymous]
+
 [Area("Admin")]
+[Route("Admin/[controller]/[action]/{id?}")]
 public class AnnouncementController : Controller
 {
     private readonly IAnnouncementService _announcementService;
+    private readonly IMapper _mapper;
 
-    public AnnouncementController(IAnnouncementService announcementService)
+    public AnnouncementController(IAnnouncementService announcementService, IMapper mapper)
     {
         _announcementService = announcementService;
+        _mapper = mapper;
     }
 
     public IActionResult Index()
     {
-        List<Announcement> announcements = _announcementService.TGetAll();
-        List<AnnouncementListViewModel> list = new List<AnnouncementListViewModel>();   
-        foreach(var item in announcements)
-        {
-            AnnouncementListViewModel announcementListViewModel = new AnnouncementListViewModel();
-            announcementListViewModel.ID = item.AnnouncementID;
-            announcementListViewModel.Title = item.Title;
-            announcementListViewModel.Content = item.Content;
-            list.Add(announcementListViewModel);
-        }
-        return View(list);
+        var values = _mapper.Map<List<AnnouncementListDTO>>(_announcementService.TGetAll());
+        return View(values);
     }
+
     [HttpGet]
     public IActionResult AddAnnouncement()
     {
-        return View();  
+        return View();
     }
     [HttpPost]
     public IActionResult AddAnnouncement(AnnouncementAddDTO announcementAddDTO)
     {
-        return View(announcementAddDTO);
+        if(ModelState.IsValid)
+        {
+            _announcementService.TAdd(new Announcement()
+            {
+                Content = announcementAddDTO.Content,
+                Title = announcementAddDTO.Title,
+                Date = Convert.ToDateTime(DateTime.Now.ToShortDateString())
+            });
+
+            return RedirectToAction("Index", "Announcement", new { area = "Admin" });
+        }
+        return View();
+        
     }
+
+    public IActionResult DeleteAnnouncement(int id)
+    {
+        var values = _announcementService.TGetByID(id);
+        _announcementService.TDelete(values);
+        return RedirectToAction("Index", "Announcement", new { area = "Admin" });
+    }
+    [HttpGet]
+    public IActionResult UpdateAnnouncement(int id)
+    {
+        var values = _mapper.Map<AnnouncementUpdateDTO>(_announcementService.TGetByID(id));
+        return View(values);
+    }
+    [HttpPost]
+    public IActionResult UpdateAnnouncement(AnnouncementUpdateDTO announcementUpdateDTO)
+    {
+        if(ModelState.IsValid)
+        {
+            _announcementService.TUpdate(new Announcement()
+            {
+                AnnouncementID = announcementUpdateDTO.AnnouncementID,
+                Content = announcementUpdateDTO.Content,
+                Title = announcementUpdateDTO.Title,
+                Date = Convert.ToDateTime((DateTime.Now.ToShortDateString()))
+            });
+            return RedirectToAction("Index", "Announcement", new { area = "Admin" });
+        }
+        return View();
+    }
+
 }
