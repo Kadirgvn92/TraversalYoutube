@@ -22,6 +22,8 @@ builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>()
     .AddErrorDescriber<CustomIdentityValidator>();
 
+builder.Services.AddHttpClient();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.ContainerDependencies();

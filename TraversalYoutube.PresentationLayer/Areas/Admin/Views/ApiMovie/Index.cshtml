@@ -1,0 +1,78 @@
+﻿@model List<ApiMovieViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Rehberler</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Rehber Ekranı</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Rehberlerin bilgilerini bu sayfada görüntüleyebilir ve güncelleyebilirsiniz
+                            </div>
+                            <br />
+                            <table class="table align-items-center table-striped mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">No</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Film Adı</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">IMDB Puanı </th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Açıklama</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Fragman</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.rank</p>
+                                            </td>
+                                            <td width="250px">
+                                                <div class="d-flex flex-column align-items-center align-self-center mb-0 px-2 py-1">
+                                                    <div class="mb-3">
+                                                        <h5 class="p-0 mb-0 text-center font-weight-bold">@item.title</h5>
+                                                    </div>
+                                                    <div>
+                                                        <img src="@item.image" class="rounded me-3" style="width:150px;height:200px;" alt="user1">
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.rating</p>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.description</p>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <a href="@item.imdb_link" target="_blank" class="btn bg-gradient-primary">Fragman</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

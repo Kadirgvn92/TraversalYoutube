@@ -1,0 +1,59 @@
+﻿
+@model IEnumerable<BookingExchangeViewModel.Exchange_Rates>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Rehberler</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Rehber Ekranı</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Rehberlerin bilgilerini bu sayfada görüntüleyebilir ve güncelleyebilirsiniz
+                            </div>
+                            <br />
+                            <table class="table align-items-center table-striped mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Kur</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Döviz Türü</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.exchange_rate_buy</p>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.currency</p>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
