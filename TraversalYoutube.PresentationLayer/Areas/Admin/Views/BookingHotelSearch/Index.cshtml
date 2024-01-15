@@ -1,0 +1,75 @@
+﻿
+@model IEnumerable<BookingHotelSearchViewModel.Result>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+    double score;
+}
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Otel Listesi</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Otel Listeleme Ekranı</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Otellerin bilgilerini bu sayfada görüntüleyebilirsiniz
+                            </div>
+                            <br />
+                            <table class="table align-items-center table-striped mb-0">
+
+                                <thead>
+                                    <tr>
+
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">#</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Otel Adı</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Otel Puanı</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Otel Değerlendirmesi</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Detaylar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td class="align-middle">
+                                                <p class="text-s">@count</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.hotel_name</p>
+                                            </td>
+
+                                            @{
+                                                score = double.Parse(item.review_score.ToString()) / 10;
+                                            }
+                                            <td class="align-middle">
+                                                <p class="text-s">@score</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.review_score_word </p>
+                                            </td>
+                                            <td width="100px" class="align-middle">
+                                                <a href="#" class="btn btn-outline-success ">Detaylar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
