@@ -17,15 +17,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Otel Listeleme Ekranı</div>
+                            <div class="card-title">Tur Listeleme Ekranı</div>
                         </div>
                         <div class="card-body">
                             <div class="card-sub">
-                                Otellerin bilgilerini bu sayfada görüntüleyebilirsiniz
+                                Tur bilgilerini bu sayfada görüntüleyebilirsiniz
                             </div>
                             <br />
                             <table class="table align-items-center table-striped mb-0">
-
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Şehir</th>
@@ -54,18 +53,17 @@
                                                 <p class="text-s">@item.capacity </p>
                                             </td>
                                             <td width="120px" class="align-middle">
-                                                <a href="#" class="btn btn-outline-danger ">Sil</a>
+                                                <a href="/Admin/DestinationCQRS/DeleteDestination/@item.id" class="btn btn-outline-danger ">Sil</a>
                                             </td>
-
                                             <td width="120px" class="align-middle">
-                                                <a href="#" class="btn btn-outline-success ">Güncelle</a>
+                                                <a href="/Admin/DestinationCQRS/GetDestination/@item.id" class="btn btn-outline-success ">Güncelle</a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
                             <br />
-                            <a href="#" class="btn btn-outline-primary ">Tur Ekle</a>
+                            <a href="/Admin/DestinationCQRS/CreateDestination" class="btn btn-outline-primary ">Tur Ekle</a>
                         </div>
                     </div>
                 </div>

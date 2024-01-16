@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TraversalYoutube.DataAccessLayer.Concrete;
-using TraversalYoutube.PresentationLayer.CQRS.Queries.DestinationQueries;
 using TraversalYoutube.PresentationLayer.CQRS.Results.DestinationResults;
 
 namespace TraversalYoutube.PresentationLayer.CQRS.Handlers.DestinationHandlers;

@@ -39,6 +39,7 @@ public static class Extensions
 
         services.AddScoped<IAnnouncementService, AnnouncementManager>();
         services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
+
     }
 
     public static void RegisterValidator(this IServiceCollection services)

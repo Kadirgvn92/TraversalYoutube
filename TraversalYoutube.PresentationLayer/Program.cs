@@ -18,6 +18,10 @@ var _loggerer = new LoggerConfiguration().MinimumLevel.Error()   //bu kod parças
 builder.Logging.AddSerilog(_loggerer);
 
 builder.Services.AddScoped<GetAllDestinationQueryHandler>();
+builder.Services.AddScoped<GetDestinationByIDQueryHandler>();
+builder.Services.AddScoped<CreateDestinationCommandHandler>();
+builder.Services.AddScoped<DeleteDestinationCommandHandler>();
+builder.Services.AddScoped<UpdateDestinationCommandHandler>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

@@ -1,0 +1,50 @@
+﻿
+@model CreateDestinationCommand
+
+@{
+    ViewData["Title"] = "CreateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card h-100">
+                <div class="card-header pb-0 p-3">
+                    <div class="row">
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-0 text-dark">Yeni Rota Oluşturma Ekranı</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-3">
+                    <hr class="horizontal gray-light my-0">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Rota</label>
+                            <input type="text" class="form-control form-control-s" asp-for="City" placeholder="Rotayı girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Kaç Gece / Kaç Gün ?</label>
+                            <input type="text" class="form-control form-control-s" asp-for="DayNight" placeholder="Gün / Gece bilgisini girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Fiyat</label>
+                            <input type="text" class="form-control form-control-s" asp-for="Price" placeholder="Rota fiyatını girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Kapasite</label>
+                            <input type="text" class="form-control form-control-s" asp-for="Capacity" placeholder="Rota kapasitesini girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            <input type="text" class="form-control form-control-s" asp-for="Description" placeholder="Rota açıklamasını girin">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Rota Oluştur</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

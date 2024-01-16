@@ -22,7 +22,8 @@ public class GetDestinationByIDQueryHandler
         {
             id = values.DestinationID,
             city = values.City,
-            daynight = values.DayNight
+            daynight = values.DayNight,
+            price = values.Price
         };
     } 
 }
