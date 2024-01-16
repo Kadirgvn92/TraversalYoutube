@@ -1,0 +1,75 @@
+﻿
+@model List<GetAllDestinationQueryResult>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Otel Listesi</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Otel Listeleme Ekranı</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Otellerin bilgilerini bu sayfada görüntüleyebilirsiniz
+                            </div>
+                            <br />
+                            <table class="table align-items-center table-striped mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Şehir</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Gün / Gece </th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Fiyat</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Kapasite</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Sil</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.city</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.daynight</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.price </p>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.capacity </p>
+                                            </td>
+                                            <td width="120px" class="align-middle">
+                                                <a href="#" class="btn btn-outline-danger ">Sil</a>
+                                            </td>
+
+                                            <td width="120px" class="align-middle">
+                                                <a href="#" class="btn btn-outline-success ">Güncelle</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <br />
+                            <a href="#" class="btn btn-outline-primary ">Tur Ekle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="CQRS\Commands\" />
     <Folder Include="wwwroot\destinationimages\" />
     <Folder Include="wwwroot\Logs\" />
     <Folder Include="wwwroot\pdfreport\" />

@@ -7,6 +7,7 @@ using TraversalYoutube.BusinessLayer.Container;
 using TraversalYoutube.BusinessLayer.ValidationRules;
 using TraversalYoutube.DataAccessLayer.Concrete;
 using TraversalYoutube.EntityLayer.Concrete;
+using TraversalYoutube.PresentationLayer.CQRS.Handlers.DestinationHandlers;
 using TraversalYoutube.PresentationLayer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,8 @@ var _loggerer = new LoggerConfiguration().MinimumLevel.Error()   //bu kod parças
     .WriteTo.File("C:\\Users\\MSI\\Desktop\\Yazýlým\\Repo\\TraversalYoutube\\TraversalYoutube.PresentationLayer\\wwwroot\\Logs\\Logger.log",
     rollingInterval: RollingInterval.Day).CreateLogger();
 builder.Logging.AddSerilog(_loggerer);
+
+builder.Services.AddScoped<GetAllDestinationQueryHandler>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
