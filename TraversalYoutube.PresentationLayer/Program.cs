@@ -1,14 +1,15 @@
-using FluentValidation.AspNetCore;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Serilog;
 using System.Reflection;
 using TraversalYoutube.BusinessLayer.Container;
-using TraversalYoutube.BusinessLayer.ValidationRules;
 using TraversalYoutube.DataAccessLayer.Concrete;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.CQRS.Handlers.DestinationHandlers;
 using TraversalYoutube.PresentationLayer.Models;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,9 @@ var _loggerer = new LoggerConfiguration().MinimumLevel.Error()   //bu kod parças
     rollingInterval: RollingInterval.Day).CreateLogger();
 builder.Logging.AddSerilog(_loggerer);
 
-builder.Services.AddScoped<GetAllDestinationQueryHandler>();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+builder.Services.AddScoped<GetAllDestinationQueryHandler>(); //Manuel CQRS için her bir handler için bir scope tanýmlamýþtýk
 builder.Services.AddScoped<GetDestinationByIDQueryHandler>();
 builder.Services.AddScoped<CreateDestinationCommandHandler>();
 builder.Services.AddScoped<DeleteDestinationCommandHandler>();

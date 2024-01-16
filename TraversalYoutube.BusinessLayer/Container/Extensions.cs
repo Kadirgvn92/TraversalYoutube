@@ -50,5 +50,7 @@ public static class Extensions
         });
 
         services.AddValidatorsFromAssemblyContaining<AnnouncementValidator>();
+
+        
     }
 }
