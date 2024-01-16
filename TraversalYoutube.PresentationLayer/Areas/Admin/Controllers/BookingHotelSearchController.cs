@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
+
 [Area("Admin")]
 public class BookingHotelSearchController : Controller
 {
@@ -27,5 +28,33 @@ public class BookingHotelSearchController : Controller
             var values = JsonConvert.DeserializeObject<BookingHotelSearchViewModel>(bodyReplace);
             return View(values.result);
         }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetCityDesID()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> GetCityDesID(string p)
+    {
+        var client = new HttpClient();
+        var request = new HttpRequestMessage
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri($"https://apidojo-booking-v1.p.rapidapi.com/locations/auto-complete?text={p}"),
+            Headers =
+    {
+        { "X-RapidAPI-Key", "1b835557bamsh51f42a1ec11b465p131830jsn7e5d47c9227c" },
+        { "X-RapidAPI-Host", "apidojo-booking-v1.p.rapidapi.com" },
+    },
+        };
+        using (var response = await client.SendAsync(request))
+        {
+            response.EnsureSuccessStatusCode();
+            var body = await response.Content.ReadAsStringAsync();
+        }
+        return View();
     }
 }
