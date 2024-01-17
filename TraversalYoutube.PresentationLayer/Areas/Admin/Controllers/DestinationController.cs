@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Abstract;
-using TraversalYoutube.BusinessLayer.Concrete;
-using TraversalYoutube.DataAccessLayer.EntityFramework;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
-using TraversalYoutube.PresentationLayer.Areas.Member.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
@@ -31,14 +28,38 @@ public class DestinationController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult AddDestination(Destination destination)
+    public async Task<IActionResult> AddDestination(CreateDestinationViewModel destination)
     {
-        destination.Image = "/userimages/tour.png";
+        if (destination.Image != null)
+        {
+            var resource = Directory.GetCurrentDirectory();
+            var extension = Path.GetExtension(destination.Image.FileName);
+            var imagename = Guid.NewGuid() + extension;
+            var savelocation = resource + "/wwwroot/destinationimages/" + imagename;
+            var stream = new FileStream(savelocation, FileMode.Create);
+            await destination.Image.CopyToAsync(stream);
+            destination.imageurl = imagename;
+        }
         destination.Image2 = "/Traversal-Liberty/assets/images/banner1.jpg";
         destination.CoverImage = "/Traversal-Liberty/assets/images/banner4.jpg";
 
-        _destinationService.TAdd(destination);
-        return RedirectToAction("Index","Destination", new { area = "Admin"});
+        Destination des = new Destination()
+        {
+            City = destination.City,
+            DayNight = destination.DayNight,
+            Price = destination.Price,
+            Capacity = destination.Capacity,
+            Description = destination.Description,
+            Status = true,
+            Details1 = destination.Details1,
+            Details2 = destination.Details2,
+            Image2 = "/Traversal-Liberty/assets/images/banner1.jpg",
+            CoverImage = "/Traversal-Liberty/assets/images/banner4.jpg",
+            Image = destination.imageurl
+        };
+
+        _destinationService.TAdd(des);
+        return RedirectToAction("Index", "Destination", new { area = "Admin" });
     }
     public IActionResult DeleteDestination(int id)
     {
@@ -53,9 +74,36 @@ public class DestinationController : Controller
         return View(values);
     }
     [HttpPost]
-    public IActionResult UpdateDestination(Destination destination)
+    public async Task<IActionResult> UpdateDestination(UpdateDestinationViewModel destination)
     {
-        _destinationService.TUpdate(destination);
+        if (destination.Image != null)
+        {
+            var resource = Directory.GetCurrentDirectory();
+            var extension = Path.GetExtension(destination.Image.FileName);
+            var imagename = Guid.NewGuid() + extension;
+            var savelocation = resource + "/wwwroot/destinationimages/" + imagename;
+            var stream = new FileStream(savelocation, FileMode.Create);
+            await destination.Image.CopyToAsync(stream);
+            destination.imageurl = imagename;
+        }
+
+
+        Destination des = new Destination()
+        {
+            DestinationID = destination.DestinationID,
+            City = destination.City,
+            DayNight = destination.DayNight,
+            Price = destination.Price,
+            Capacity = destination.Capacity,
+            Description = destination.Description,
+            Status = true,
+            Details1 = destination.Details1,
+            Details2 = destination.Details2,
+            Image2 = "/Traversal-Liberty/assets/images/banner1.jpg",
+            CoverImage = "/Traversal-Liberty/assets/images/banner4.jpg",
+            Image = destination.imageurl
+        };
+        _destinationService.TUpdate(des);
         return RedirectToAction("Index", "Destination", new { area = "Admin" });
     }
 }
