@@ -1,0 +1,23 @@
+﻿@model AccountViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="wrapper m-3">
+        <h3>Unit Of Work Hesap İşlemleri</h3>
+        <form method="post">
+            <label>Gönderen</label>
+            <input type="text" asp-for="SenderID" class="form-control" />
+            <br />
+            <label>Alan</label>
+            <input type="text" asp-for="ReceiverID" class="form-control" />
+            <br />
+            <label>Miktar</label>
+            <input type="text" asp-for="Amount" class="form-control" />
+            <button type="submit" class="btn btn-primary">Hesaba Aktar</button>
+        </form>
+    </div>
+</div>

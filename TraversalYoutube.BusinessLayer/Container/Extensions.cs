@@ -4,10 +4,13 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 using TraversalYoutube.BusinessLayer.Abstract;
+using TraversalYoutube.BusinessLayer.Abstract.AbstractUow;
 using TraversalYoutube.BusinessLayer.Concrete;
+using TraversalYoutube.BusinessLayer.Concrete.ConcereteUoW;
 using TraversalYoutube.BusinessLayer.ValidationRules;
 using TraversalYoutube.DataAccessLayer.Abstract;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
+using TraversalYoutube.DataAccessLayer.UnitOfWork;
 using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.BusinessLayer.Container;
@@ -40,6 +43,10 @@ public static class Extensions
         services.AddScoped<IAnnouncementService, AnnouncementManager>();
         services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
 
+        services.AddScoped<IAccountDal, EfAccountDal>();
+        services.AddScoped<IAccountService, AccountManager>();
+
+        services.AddScoped<IUoWDal,UoWDal>();
     }
 
     public static void RegisterValidator(this IServiceCollection services)
