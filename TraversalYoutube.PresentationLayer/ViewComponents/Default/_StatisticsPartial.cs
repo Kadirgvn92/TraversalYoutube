@@ -11,6 +11,8 @@ public class _StatisticsPartial : ViewComponent
         ViewBag.v = context.Destinations.Count();
         ViewBag.v1 = context.Guides.Count();
         ViewBag.v2 = "254";
+        ViewBag.v3 = context.Users.Count();
+        ViewBag.v4 = context.Comments.Count();
         return View();  
     }
 }

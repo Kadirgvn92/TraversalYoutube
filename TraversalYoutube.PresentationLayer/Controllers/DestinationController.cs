@@ -5,7 +5,7 @@ using TraversalYoutube.DataAccessLayer.EntityFramework;
 using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.PresentationLayer.Controllers;
-
+[AllowAnonymous]
 public class DestinationController : Controller
 {
     DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
