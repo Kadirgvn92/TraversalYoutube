@@ -13,4 +13,5 @@ public class AppUser : IdentityUser<int> //IdentityUser içine ID olarak kullana
     public string Surname { get; set; }
     public string Gender { get; set; }
    public List<Reservation> Reservations { get; set; }
+   public List<Comment> Comments { get; set; }
 } 
