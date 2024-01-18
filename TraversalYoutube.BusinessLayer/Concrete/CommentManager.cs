@@ -41,6 +41,11 @@ public class CommentManager : ICommentService
         return _commentDal.GetListByFilter(x => x.DestinationID == id);
     }
 
+    public List<Comment> TGetListCommentWithDestinationAndUser(int id)
+    {
+        return _commentDal.GetListCommentWithDestinationAndUser(id);
+    }
+
     public void TUpdate(Comment entity)
     {
        _commentDal.Update(entity);
