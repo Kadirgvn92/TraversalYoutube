@@ -4,16 +4,16 @@ using TraversalYoutube.BusinessLayer.Abstract;
 namespace TraversalYoutube.PresentationLayer.Controllers;
 public class ContactController : Controller
 {
-    private readonly IContactUsService contactUsService;
+    private readonly IContactService _contactService;
 
-    public ContactController(IContactUsService contactUsService)
+    public ContactController(IContactService contactService)
     {
-        this.contactUsService = contactUsService;
+        _contactService = contactService;
     }
 
     public IActionResult Index()
     {
-        var values = contactUsService.TGetAll();
+        var values = _contactService.TGetAll();
         return View(values);
     }
 }
