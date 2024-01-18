@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TraversalYoutube.DataAccessLayer.Concrete;
 
@@ -11,9 +12,10 @@ using TraversalYoutube.DataAccessLayer.Concrete;
 namespace TraversalYoutube.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240118194120_mig_add_date_dest")]
+    partial class mig_add_date_dest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -542,9 +544,6 @@ namespace TraversalYoutube.DataAccessLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GuideID"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description2")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")

@@ -25,15 +25,16 @@
         </h3>
         <div class="blog-post-align">
             <div class="blog-post-img">
-                <a href="#"><img src="~/Traversal-Liberty/assets/images/team1.jpg" style="height:100px;width:300px" alt="" class="rounded-circle img-fluid" /></a>
+                <img src="@Model.Guide.Image" alt="" class="rounded-circle img-fluid" />
             </div>
             <div class="blog-post-info">
                 <div class="author align-items-center mb-1">
-                    <a href="#">Johnson smith</a> in <a href="#url">Traversal</a>
+                    <p class="text-dark"> @Model.Guide.Name </p>
+                    <p>@Model.Guide.Description</p>
                 </div>
                 <ul class="blog-meta">
                     <li class="meta-item blog-lesson">
-                        <span class="meta-value"> June 13, 2020 </span>
+                        <span class="meta-value"> @Model.Date.Date.ToShortDateString()</span>
                     </li>
                     <li class="meta-item blog-students">
                         <span class="meta-value"> 6min read</span>

@@ -1,0 +1,57 @@
+﻿
+@model List<Guide>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container">
+            <h2 class="title">Rehberler</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="#url">Ana Sayfa</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Rehberlerimiz </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="w3l-team" id="team">
+    <div class="team-block py-5">
+        <div class="container py-lg-5">
+            <div class="title-content text-center mb-lg-3 mb-4">
+                <h6 class="sub-title">Ekip Arkadaşlarımız</h6>
+                <h3 class="hny-title">Rehberlerimiz ile tanışın..</h3>
+            </div>
+            <div class="row">
+                @foreach(var item in Model)
+                {
+                    <div class="col-lg-3 col-6 mt-lg-5 mt-4">
+                        <div class="box16">
+                            <a href="#url"><img src="@item.Image" alt="" style="height:270px;width:270px" class="img-fluid" /></a>
+                            <div class="box-content">
+                                <h3 class="title"><a href="#url">@item.Name</a></h3>
+                                <span class="post">@item.Description</span>
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" class="facebook">
+                                            <span class="fa fa-facebook-f"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="twitter">
+                                            <span class="fa fa-twitter"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+               
+            </div>
+        </div>
+    </div>
+</section>

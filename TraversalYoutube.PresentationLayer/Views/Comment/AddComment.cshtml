@@ -1,30 +1,33 @@
 ﻿
 
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="leave-comment-form mt-5" id="reply">
+        <h4 class="side-title mb-2">Bir yorum bırakın</h4>
+        <p class="mb-4">
+            İşaretli alanları doldurmanız gerekmektedir.*
+        </p>
+        <form method="post" asp-action="AddComment" asp-controller="Comment">
+            <div class="input-grids row ">
+                <div class="form-group col-lg-6">
+                    <input type="hidden" name="AppUserID" class="form-control border border-dark" placeholder="Adınız Soyadınız *" value="@ViewBag.user">
+                </div>
+                <input type="hidden" name="DestinationID" readonly="readonly" class="form-control border border-dark" placeholder="@ViewBag.i *" required="" value="@ViewBag.i">
 
-
-<div class="leave-comment-form mt-5" id="reply">
-    <h4 class="side-title mb-2">Bir yorum bırakın</h4>
-    <p class="mb-4">
-        İşaretli alanları doldurmanız gerekmektedir.*
-    </p>
-    <form method="post" asp-action="AddComment" asp-controller="Comment">
-        <div class="input-grids row ">
-            <div class="form-group col-lg-6">
-                <input type="text" name="CommentUser" class="form-control border border-dark" placeholder="Adınız Soyadınız *"
-                       required="">
             </div>
-            <input type="hidden" name="DestinationID" readonly="readonly" class="form-control border border-dark" placeholder="@ViewBag.i *" required="" value="@ViewBag.i">
+            <div class="form-group">
+                <textarea name="CommentContent" class="form-control border border-dark" placeholder="Yorumunuz *" required=""
+                          spellcheck="false"></textarea>
+            </div>
 
-        </div>
-        <div class="form-group">
-            <textarea name="CommentContent" class="form-control border border-dark" placeholder="Yorumunuz *" required=""
-                      spellcheck="false"></textarea>
-        </div>
-        
-        <div class="submit text-right">
-            <button class="btn btn-style btn-primary">Yorum Yap</button>
-        </div>
-    </form>
-</div>
+            <div class="submit text-right">
+                <button class="btn btn-style btn-primary">Yorum Yap</button>
+            </div>
+        </form>
+    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+} else
+{
+    <h2>Yorum yapabilmek için üye olmanız gerekli.</h2>
+}
+
