@@ -2,3 +2,4 @@
 
 - şifremi unuttum sekmesi yapılacak email doğrulamasından sonra onay kodu ile şifreyi güncelleyecek
 - Tüm formlar için validator kullanılacak
+- Yazılan sendmessage'leri admin tarafında sergileyen bir controller yapılacak
