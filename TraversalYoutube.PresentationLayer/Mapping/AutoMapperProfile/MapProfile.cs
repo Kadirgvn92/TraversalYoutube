@@ -2,6 +2,7 @@
 using TraversalYoutube.DTOLayer.DTOs.AnnouncementDTOs;
 using TraversalYoutube.DTOLayer.DTOs.AppUserDTOs;
 using TraversalYoutube.DTOLayer.DTOs.CityDTOs;
+using TraversalYoutube.DTOLayer.DTOs.ContactDTOs;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
 using TraversalYoutube.PresentationLayer.Models;
@@ -17,6 +18,7 @@ public class MapProfile : Profile
         CreateMap<AnnouncementUpdateDTO,Announcement>().ReverseMap();
         CreateMap<CreateDestinationViewModel,Destination>().ReverseMap();
         CreateMap<UpdateDestinationViewModel,Destination>().ReverseMap();
+        CreateMap<SendMessageDTO,Contact>().ReverseMap();
 
         CreateMap<CityAddDTO,City>().ReverseMap();
         CreateMap<AppUserRegisterDTO,AppUser>().ReverseMap();
