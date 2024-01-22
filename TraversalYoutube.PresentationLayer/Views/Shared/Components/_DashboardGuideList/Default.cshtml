@@ -5,7 +5,7 @@
 <div class="col-md-6">
     <!-- USERS LIST -->
     <div class="card">
-        <div class="card-header">
+        <div class="card-header mb-2">
             <h3 class="card-title">Rehberler</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -21,9 +21,10 @@
                 @foreach (var item in Model.Take(4))
                 {
                     <li>
-                        <img src="@item.Image" width="154px" height="154px" alt="User Image">
+                        <img src="@item.Image" width="160px" height="160px" alt="User Image">
                         <span class="users-list-name">@item.Name</span>
-                        <span class="users-list-date">@item.Description</span>
+                        <span class="users-list-date text-s">@item.Description</span>
+
                     </li>
                 }
             </ul>

@@ -9,7 +9,6 @@ using TraversalYoutube.EntityLayer.Concrete;
 namespace TraversalYoutube.PresentationLayer.Areas.Member.Controllers;
 
 [Area("Member")]
-
 [Route("Member/[controller]/[action]/{id?}")]
 public class ReservationController : Controller
 {

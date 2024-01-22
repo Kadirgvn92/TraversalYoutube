@@ -1,6 +1,67 @@
 ﻿
+@model List<ContactUs>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Mesajlar Ekranı</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Mesajlar</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Gelen mesakları bu sayfada görüntüleyebilirsiniz.
+                            </div>
+                            <table class="table align-items-center table-striped mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder">Ad Soyad</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Mail Adresi </th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Konu</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Mesaj</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Mesaj Tarihi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td  class="align-middle">
+                                                <p class="mb-0 align-middle text-s">@item.Name</p>
+                                            </td>
+                                            <td class="align-middle" width="130px">
+                                                <p class="text-s mb-0">@item.Mail</p>
+                                            </td>
+                                            <td class="align-middle ">
+                                                <span>@item.Subject</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class=" text-s mb-0">@item.MessageBody</span>
+                                            </td>
+                                            <td width="100px" class="align-middle text-center">
+                                                <span class="text-secondary mb-0 text-center">
+                                                    @item.MessageDate.Date.ToShortDateString()
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

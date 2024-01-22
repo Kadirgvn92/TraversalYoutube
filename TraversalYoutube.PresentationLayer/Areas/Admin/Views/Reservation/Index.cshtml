@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Rotalar Ekranı</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Rotalar</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Rotalar kısmını bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
+                            </div>
+                            <br />
+                            <table class="table align-items-center table-striped mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Rota</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Gün / Gece</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Fiyat</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Açıklama</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  text-center">Kapasite</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sitede Gör</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td width="200px">
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="/destinationimages/@item.Image" class="rounded-circle me-3" style="width:80px;height:80px;" alt="user1">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center ml-4">
+                                                        <h6 class="mb-0 font-weight-bold  text-s">@item.City</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle" width="130px">
+                                                <p class="text-s font-weight-bold mb-0">@item.DayNight</p>
+                                            </td>
+                                            <td class="align-middle ">
+                                                <div class="text-center color-palette text-lg rounded bg-success">
+                                                    @item.Price
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class=" text-s font-weight-bold mb-0">@item.Description</span>
+                                            </td>
+                                            <td width="80px" class="align-middle text-center">
+                                                <span class="text-secondary font-weight-bold text-lg mb-0 text-center">
+                                                    @item.Capacity
+                                                </span>
+                                            </td>
+                                            <td width="120px" class="align-middle">
+                                                <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info ">Sitede Gör</a>
+                                            </td>
+                                            <td width="60px" class="align-middle">
+                                                <a href="/Admin/Destination/DeleteDestination/@item.DestinationID" class="btn btn-outline-danger ">Sil</a>
+                                            </td>
+                                            <td width="80px" class="align-middle">
+                                                <a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn btn-outline-success ">Güncelle</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <br />
+                            <div>
+                                <a href="/Admin/Destination/AddDestination/" class="btn btn-primary">Yeni Rota Oluşturun</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,9 +1,9 @@
-﻿@model List<Destination>
+﻿@model List<ContactUs>
 
 <div class="col-md-6">
     <div class="card">
         <div class="card-header border-transparent">
-            <h3 class="card-title">Rotalar</h3>
+            <h3 class="card-title">Mesajlar</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -20,25 +20,23 @@
                 <table class="table m-0">
                     <thead>
                         <tr>
-                            <th class="text-center">Rota</th>
-                            <th>Gün / Gece </th>
-                            <th>Rota Bilgileri</th>
-                            <th>Fiyat</th>
+                            <th>Ad</th>
+                            <th>Konu </th>
+                            <th>Mesaj</th>
+                            <th>Tarih</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Take(4)) // burada ilk 4 tanesini göstermek için yapıyoruz
+                        @foreach (var item in Model.OrderByDescending(x => x.MessageDate).Take(7)) // burada ilk 7 tanesini göstermek için yapıyoruz
                         {
                             <tr>
                                 <td class="align-middle">
-                                    <img class="rounded-circle" src="/destinationimages/@item.Image" width="80px" height="80px">
-                                    &nbsp;
-                                    <span>@item.City</span>
+                                    <span>@item.Name</span>
                                 </td>
-                                <td class="align-middle">@item.DayNight</td>
-                                <td class="align-middle">@item.Description</td>
-                                <td class="align-middle">
-                                    <span class="badge badge-success text-md">@item.Price</span>
+                                <td class="align-middle">@item.Subject</td>
+                                <td class="align-middle">@item.MessageBody</td>
+                                <td class="align-middle">@item.MessageDate.Date.ToShortDateString()
+                                   
                                 </td>
                             </tr>
                         }

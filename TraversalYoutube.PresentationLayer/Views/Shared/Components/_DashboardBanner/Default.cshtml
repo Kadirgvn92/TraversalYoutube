@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Take(4)) // burada ilk 4 tanesini göstermek için yapıyoruz
+                        @foreach (var item in Model.OrderByDescending(x => x.ReservationDate).Take(4)) // burada ilk 4 tanesini göstermek için yapıyoruz
                         {
                             <tr>
                                 <td>@item.AppUser.Name @item.AppUser.Surname</td>
@@ -43,6 +43,10 @@
                                     else if (item.Status == "Onaylandı")
                                     {
                                         <span class="badge badge-success text-s">@item.Status</span>
+                                    }
+                                    else if (item.Status == "İptal Edildi")
+                                    {
+                                        <span class="badge badge-danger text-s">@item.Status</span>
                                     }
                                     else
                                     {
