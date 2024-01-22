@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
@@ -44,4 +45,31 @@ public class RoleController : Controller
             return View();
         }
     }
+
+    public async Task<IActionResult> DeleteRole(int id)
+    {
+        var value = _roleManager.Roles.FirstOrDefault(x => x.Id == id);
+        await _roleManager.DeleteAsync(value);
+        return RedirectToAction("Index", "Role", new { area = "Admin" });
+    }
+    [HttpGet]
+    public IActionResult UpdateRole(int id)
+    {
+        var values = _roleManager.Roles.FirstOrDefault(x => x.Id == id);
+        UpdateRoleViewModel updateDestinationViewModel = new UpdateRoleViewModel()
+        {
+            RoleID = values.Id,
+            RoleName = values.Name
+        };
+        return View(updateDestinationViewModel);
+    }
+    [HttpPost]
+    public async Task<IActionResult> UpdateRole(UpdateRoleViewModel updateRoleViewModel)
+    {
+        var values = _roleManager.Roles.FirstOrDefault(x => x.Id == updateRoleViewModel.RoleID);
+        values.Name = updateRoleViewModel.RoleName;
+        await _roleManager.UpdateAsync(values);
+        return RedirectToAction("Index", "Role", new { area = "Admin" });
+    }
+
 }

@@ -48,6 +48,11 @@ builder.Services.AddMvc(config =>
     config.Filters.Add(new AuthorizeFilter(policy));
 });
 
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.LoginPath = "/Login/SignIn/";
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
