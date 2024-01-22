@@ -42,6 +42,11 @@ public class DestinationManager : IDestinationService
         return _destinationDal.GetDestinationWithGuide(id);
     }
 
+    public List<Destination> TGetLastFourDestinations()
+    {
+        return _destinationDal.GetLastFourDestinations();
+    }
+
     public void TUpdate(Destination entity)
     {
         _destinationDal.Update(entity);
