@@ -50,6 +50,7 @@ public static class Extensions
         services.AddScoped<IAccountService, AccountManager>();
 
         services.AddScoped<IUoWDal,UoWDal>();
+
     }
 
     public static void RegisterValidator(this IServiceCollection services)

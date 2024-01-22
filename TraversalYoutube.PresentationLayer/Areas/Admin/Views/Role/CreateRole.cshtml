@@ -1,0 +1,36 @@
+﻿
+@model CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card h-100">
+                <div class="card-header pb-0 p-3">
+                    <div class="row">
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-0 text-dark">Yeni Rol Oluşturma Ekranı</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-3">
+                    <hr class="horizontal gray-light my-0">
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Rol İsmi</label>
+                            <input type="text" class="form-control form-control-s" asp-for="Rolename" placeholder="Rol ismini girin">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Rol Oluştur</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

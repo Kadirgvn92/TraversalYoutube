@@ -1,17 +1,163 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-<h1>Index</h1>
-<br />
-<a href="/Excel/StaticExcelReport/" class="btn btn-outline-info m-1 ml-3">Statik Excel Raporları</a>
-<br />
-<br />
-<a href="/Excel/DestinationExcelReport/" class="btn btn-outline-info m-1 ml-3">Tur Listesi Excel Raporları</a>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Raporlar</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
+    <section class="content">
+        <div class="container-fluid">
+            <h4 class="mb-2">Excel Raporları</h4>
+            <hr />
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>Tur Listesi</h3>
+
+                            <p>Excel Raporu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/Excel/DestinationExcelReport/" class="small-box-footer">
+                            Raporu almak için tıklayınız <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>Misafir Listesi</h3>
+
+                            <p>Excel Raporu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/Excel/GuestExcelReport/" class="small-box-footer">
+                            Raporu almak için tıklayınız <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>Rehber Listesi</h3>
+
+                            <p>Excel Raporu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/Excel/GuideExcelReport/" class="small-box-footer">
+                            Raporu almak için tıklayınız <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>Yorum Listesi</h3>
+
+                            <p>Excel Raporu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/Excel/CommentExcelReport/" class="small-box-footer">
+                            Raporu almak için tıklayınız <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <h4 class="mb-2">PDF Raporları</h4>
+            <hr />
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>Tur Listesi</h3>
+
+                            <p>PDF Raporu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/Admin/PdfReport/DestinationPDFReport" class="small-box-footer">
+                            Raporu almak için tıklayınız <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>Misafir Listesi</h3>
+
+                            <p>PDF Raporu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/Admin/PdfReport/GuestPDFReport/" class="small-box-footer">
+                            Raporu almak için tıklayınız <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>Rehber Listesi</h3>
+
+                            <p>PDF Raporu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/Admin/PdfReport/GuidePDFReport/" class="small-box-footer">
+                            Raporu almak için tıklayınız <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>Yorum Listesi</h3>
+
+                            <p>PDF Raporu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/Admin/PdfReport/CommentPDFReport/" class="small-box-footer">
+                            Raporu almak için tıklayınız <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

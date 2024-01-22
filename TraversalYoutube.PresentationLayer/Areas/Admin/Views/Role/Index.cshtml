@@ -1,0 +1,75 @@
+﻿@model List<AppRole>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Rol Listesi</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Roller Ekranı</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Üyelerin rol bilgilerini bu sayfada görüntüleyebilir ve güncelleyebilirsiniz
+                            </div>
+                            <br />
+                            @if (!Model.Any())
+                            {
+                                <div class="container mt-5">
+                                    <hr class="" />
+                                    <br />
+                                    <h5 class="text-center font-weight-bold text-danger">Rol bilgisi bulunmamaktadır.
+                                    <br />
+                                    <br />
+                                </div>
+                            }
+                            else
+                            {
+                                <table class="table align-items-center mb-0">
+
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Rol Adı</th>
+                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Sil</th>
+                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Düzenle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="border-top">
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <p class="text-s">@item.Name</p>
+                                                </td>
+                                                <td width="150px" class="align-middle">
+                                                    <a href="/Admin/Role/DeleteRole/@item.Id" class="btn bg-gradient-danger ">Sil</a>
+                                                </td>
+                                                <td width="150px" class="align-middle">
+                                                    <a href="/Admin/Role/EditRole/@item.Id" class="btn bg-gradient-info ">Düzenle</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            <br />
+                            <div>
+                                <a href="/Admin/Role/CreateRole" class="btn btn-primary">Yeni Rol Ekleyin</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
