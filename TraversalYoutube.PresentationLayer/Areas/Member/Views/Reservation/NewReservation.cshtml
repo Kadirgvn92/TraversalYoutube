@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <form method="post" role="form text-left" id="ResForm">
                         <div class="mb-3">
-                            @Html.DropDownListFor(x => x.Destination, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.DestinationID ,(List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
                         </div>
                         <div class="mb-3">
                             <input type="text" required asp-for="PersonCount" class="form-control mb-2" placeholder="Kişi Sayısı" aria-label="Surname">
@@ -29,7 +29,7 @@
                             <textarea asp-for="Description" class="form-control mb-2" placeholder="Varsa eklemek istedikleriniz" aria-label="Email"></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" id="ResCreate" class="btn bg-gradient-dark w-100 my-4 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Rezervasyon Oluştur</button>
+                            <button type="submit" id="ResCreate" class="btn bg-gradient-dark w-100 my-4 mb-2">Rezervasyon Oluştur</button>
                         </div>
                     </form>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -40,7 +40,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p> Rezervasyonunuz "Onay Bekliyor" durumundadır. Traversal ekibimiz reservasyon güncelleme işlemlerini Güncel Reservasyonlarım sayfasından takip edebilirsiniz</p>
+                                    <p> Rezervasyonunuz oluşturdukran sonra "Onay Bekliyor" durumunda olacaktır. Traversal ekibimiz reservasyon durumlarını kontrol edecektir. Rezervasyon onaylandığında size bilgi verilecektir ayrıca güncelleme işlemlerini Güncel Reservasyonlarım sayfasından takip edebilirsiniz.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary">Anladım</button>

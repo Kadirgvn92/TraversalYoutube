@@ -51,6 +51,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="Resources\" />
     <Folder Include="wwwroot\Logs\" />
     <Folder Include="wwwroot\pdfreport\" />
   </ItemGroup>

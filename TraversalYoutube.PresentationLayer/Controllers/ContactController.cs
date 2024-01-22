@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.DTOLayer.DTOs.ContactDTOs;
 using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.PresentationLayer.Controllers;
+[AllowAnonymous]
 public class ContactController : Controller
 {
     private readonly IContactUsService _contactUsService;

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalYoutube.PresentationLayer.Controllers;
+[AllowAnonymous]
 public class AboutController : Controller
 {
     public IActionResult Index()

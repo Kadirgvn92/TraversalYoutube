@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Abstract;
 
 namespace TraversalYoutube.PresentationLayer.Controllers;
+[AllowAnonymous]
 public class PackageController : Controller
 {
     private readonly IDestinationService _destinationService;

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TraversalYoutube.EntityLayer\TraversalYoutube.EntityLayer.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -30,4 +30,5 @@ public class DestinationController : Controller
         var values = destinationManager.TGetDestinationWithGuide(id);
         return View(values);  
     }
+
 }

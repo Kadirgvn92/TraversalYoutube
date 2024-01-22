@@ -3,11 +3,11 @@
 <div class="col-12 col-xl-4">
     <div class="card h-100">
         <div class="card-header pb-0 p-3">
-            <h6 class="mb-0 text-primary">Tur Rezervasyonlarım</h6>
+            <h6 class="mb-0 text-primary">Son Tur Rezervasyonlarım</h6>
         </div>
         <div class="card-body p-3">
             <ul class="list-group">
-                @foreach (var item in Model)
+                @foreach (var item in Model.OrderByDescending(x => x.ReservationDate).Take(4)) //Önemli tarih sıralamasına göre son 4 tur getiriyor
                 {
                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                         <div class="avatar me-3">
@@ -16,7 +16,30 @@
                         <div class="d-flex align-items-start flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">@item.Destination.City</h6>
                         </div>
-                        <p class="btn btn-link pe-3 ps-0 mb-0 ms-auto">@item.Status</p>
+                        @{
+                            // Status değerine göre renk sınıfını belirle
+                            string statusColorClass = "";
+                            switch (item.Status)
+                            {
+                                case "Onay Bekliyor":
+                                    statusColorClass = "text-warning";
+                                    break;
+                                case "Onaylandı":
+                                    statusColorClass = "text-success";
+                                    break;
+                                case "İptal Edildi":
+                                    statusColorClass = "text-danger";
+                                    break;
+                                case "Tamamlandı":
+                                    statusColorClass = "text-secondary";
+                                    break;
+                                default:
+                                    statusColorClass = "text-primary";
+                                    break;
+                            }
+                        }
+                        <p class="font-weight-bold text-sm @statusColorClass pe-3 ps-0 mb-0 ms-auto">@item.Status</p>
+
                     </li>
                 }
             </ul>

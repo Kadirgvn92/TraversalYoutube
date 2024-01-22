@@ -17,6 +17,15 @@
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6 class="font-weight-bolder">Tur Rotalarım</h6>
+                            <form asp-action="Index" method="get" asp-area="Member">
+                                <div>
+                                    <p>
+                                        Lütfen aranacak turu giriniz :
+                                    </p>
+                                    <input class="mb-2 rounded" name="searchString" value="@ViewData["CurrentFilter"]" />
+                                </div>
+                                <input type="submit" value="Şehir Ara" class="btn btn-primary" />
+                            </form>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -39,7 +48,7 @@
                                                 <td width="300px">
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
-                                                            <img src="@item.Image" class="avatar avatar-s me-3" alt="user1">
+                                                            <img src="/destinationimages/@item.Image" class="avatar avatar-s me-3" alt="user1">
                                                         </div>
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <h6 class="mb-0 text-sm">@item.City</h6>

@@ -6,14 +6,19 @@ using TraversalYoutube.DataAccessLayer.EntityFramework;
 namespace TraversalYoutube.PresentationLayer.Areas.Member.Controllers;
 
 [Area("Member")]
-[AllowAnonymous]
+[Route("Member/[controller]/[action]/{id?}")]
 public class DestinationController : Controller
 {
     DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
 
-    public IActionResult Index()
+    public IActionResult Index(string searchString)
     {
-        var values = destinationManager.TGetAll();
-        return View(values);
+        ViewData["CurrentFilter"] = searchString;
+        var valueSeach = from x in destinationManager.TGetAll() select x;
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            valueSeach = valueSeach.Where(y => y.City.Contains(searchString));
+        }
+        return View(valueSeach.ToList());
     }
 }

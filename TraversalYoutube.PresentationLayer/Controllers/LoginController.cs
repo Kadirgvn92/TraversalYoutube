@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.EntityLayer.Concrete;
@@ -7,7 +8,6 @@ using TraversalYoutube.PresentationLayer.Models;
 namespace TraversalYoutube.PresentationLayer.Controllers;
 
 [AllowAnonymous]
-[Route("Admin/[controller]/[action]/{id?}")]
 public class LoginController : Controller
 {
     private readonly UserManager<AppUser> _userManager;
@@ -76,5 +76,11 @@ public class LoginController : Controller
             }
         }
         return View(); 
+    }
+    [HttpGet]
+    public async Task<IActionResult> LogOut()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Default");
     }
 }

@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TraversalYoutube.BusinessLayer.Concrete;
 using TraversalYoutube.DataAccessLayer.EntityFramework;
+using TraversalYoutube.DTOLayer.DTOs.ReservaitonDTOs;
 using TraversalYoutube.EntityLayer.Concrete;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Member.Controllers;
 
 [Area("Member")]
+
+[Route("Member/[controller]/[action]/{id?}")]
 public class ReservationController : Controller
 {
     DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
@@ -53,11 +56,13 @@ public class ReservationController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult NewReservation(Reservation p)
+    public async Task<IActionResult> NewReservation(Reservation model)
     {
-        p.AppUserId = 12;
-        p.Status = "Onay Bekliyor";
-        reservationManager.TAdd(p);
-        return RedirectToAction("CurrentReservation");
+        var values = await _userManager.FindByNameAsync(User.Identity.Name);
+        model.AppUserId = values.Id;
+        model.Status = "Onay Bekliyor";
+
+        reservationManager.TAdd(model);
+        return RedirectToAction("ApprovalReservation","Reservation",new { area = "Member" });
     }
 }

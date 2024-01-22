@@ -10,6 +10,7 @@ using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.CQRS.Handlers.DestinationHandlers;
 using TraversalYoutube.PresentationLayer.Models;
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,8 +30,10 @@ builder.Services.AddScoped<UpdateDestinationCommandHandler>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddDbContext<Context>();
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>()
-    .AddErrorDescriber<CustomIdentityValidator>();
+builder.Services.AddIdentity<AppUser, AppRole>()
+    .AddEntityFrameworkStores<Context>()
+    .AddErrorDescriber<CustomIdentityValidator>()
+    .AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider);
 
 builder.Services.AddHttpClient();
 
@@ -72,7 +75,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Default}/{action=Index}/{id?}");
 
 
 app.UseEndpoints(endpoints =>
