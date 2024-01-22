@@ -7,6 +7,7 @@ using TraversalYoutube.PresentationLayer.Models;
 namespace TraversalYoutube.PresentationLayer.Controllers;
 
 [AllowAnonymous]
+[Route("Admin/[controller]/[action]/{id?}")]
 public class LoginController : Controller
 {
     private readonly UserManager<AppUser> _userManager;
