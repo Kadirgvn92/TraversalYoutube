@@ -1,0 +1,52 @@
+﻿@model List<AppUser>
+
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Kullanıcı Rol Atama</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Kullanıcı Rol Atama Ekranı</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Üyelerin rol bilgilerini bu sayfada görüntüleyebilir ve güncelleyebilirsiniz
+                            </div>
+                            <br />
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Kullanıcı Adı</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Rol Ata</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="align-middle">
+                                                <p class="text-s">@item.UserName</p>
+                                            </td>
+                                            <td width="150px" class="align-middle">
+                                                <a href="/Admin/Role/AssignRole/@item.Id" class="btn bg-gradient-warning ">Rol Ata</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

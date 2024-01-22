@@ -31,6 +31,7 @@
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Kullanıcı Adı</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">E-mail</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Telefon Numarası</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Rol Ata</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Düzenle</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Yorumlar</th>
@@ -43,8 +44,11 @@
                                         <tr>
                                             <td width="250px">
                                                 <div class="d-flex flex-column align-items-center align-self-center mb-3 px-2 py-1">
+                                                    <div>
+                                                        <img src="/userimages/@item.ImageUrl" class="rounded-circle me-3" style="width:60px;height:60px;" alt="user1">
+                                                    </div>
                                                     <div class="mt-2">
-                                                        <h6 class="mb-0   text-s">@item.Name @item.Surname</h6>
+                                                        <h6 class="mb-0 text-s">@item.Name @item.Surname</h6>
                                                     </div>
                                                 </div>
                                             </td>
@@ -56,6 +60,9 @@
                                             </td>
                                             <td class="align-middle">
                                                 <span class=" text-s mb-0">@item.PhoneNumber</span>
+                                            </td>
+                                            <td width="100px" class="align-middle">
+                                                <a href="/Admin/Role/AssignRole/@item.Id" class="btn btn-outline-warning ">Rol Ata</a>
                                             </td>
                                             <td width="100px" class="align-middle">
                                                 <a href="/Admin/User/UpdateUser/@item.Id" class="btn btn-outline-info ">Düzenle</a>
