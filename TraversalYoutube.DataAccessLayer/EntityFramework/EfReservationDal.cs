@@ -55,7 +55,8 @@ public class EfReservationDal : GenericRepository<Reservation>, IReservationDal
     public List<Reservation> GetListWithReservationByWaitApproval()
     {
         using var context = new Context();
-        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Onay Bekliyor").ToList();
+        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Onay Bekliyor").Include(x => x.AppUser)
+                                    .ToList();
     }
 
     public List<Reservation> GetListWithReservationByAccepted()
@@ -74,6 +75,7 @@ public class EfReservationDal : GenericRepository<Reservation>, IReservationDal
     public List<Reservation> GetListWithReservationByCancel()
     {
         using var context = new Context();
-        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "İptal Edildi").ToList();
+        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "İptal Edildi").Include(x => x.AppUser)
+                                   .ToList();
     }
 }

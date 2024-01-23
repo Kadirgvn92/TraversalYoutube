@@ -26,17 +26,19 @@
                     <div class="price-box">
                         <div class="grid grid-column-2">
                             <div class="column pr-img-gd text-lg-center">
-                                <img src="/destinationimages/@item.Image" style="height:80px;width:80px" alt="" class="rounded-circle img-fluid" />
-                                <h6 class="pricehead mt-2">
+                                <img src="/destinationimages/@item.Image" style="height:150px;width:150px" alt="" class="rounded-circle img-fluid" />
+                                <h5 class="pricehead mt-3">
                                     @item.City
-                                </h6>
+                                </h5>
                             </div>
-                            <div class="column text-lg-center">
-                                <p class="price-title">@item.DayNight</p>
+                            <div class="column text-lg-center text-dark">
+                                <p class="font-weight-bold ">@item.Description</p>
+                                &nbsp;
+                                <p>@item.DayNight</p>
                             </div>
                             <div class="column price-number text-md-right">
-                                <h3 class="pricing">
-                                    <sup class="pri1">₺</sup>@item.Price<sup class="pri"></sup>
+                                <h3 class="pricing text-success">
+                                    @item.Price<sup class="pri1">₺</sup>
                                 </h3>
                                 <a class="btn btn-style btn-primary ml-lg-3" href="/Login/SignIn/">Rezervasyon</a>
                             </div>

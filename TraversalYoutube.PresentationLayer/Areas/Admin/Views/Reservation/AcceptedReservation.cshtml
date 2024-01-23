@@ -4,13 +4,14 @@
 @{
     ViewData["Title"] = "AcceptedReservation";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 <div class="content-wrapper">
     <div class="content">
         <div class="container-fluid">
             <br />
-            <h4 class="page-title">Rotalar Ekranı</h4>
+            <h4 class="page-title">Reservasyon Ekranı</h4>
             <br />
             <div class="row">
                 <div class="col-md-12">
@@ -20,28 +21,33 @@
                         </div>
                         <div class="card-body">
                             <div class="card-sub">
-                                Onaylanan Reservasyonları bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
+                                Onaylanan Reservasyonları bu sayfada görüntüleyebilirsiniz.
                             </div>
                             <br />
                             <table class="table align-items-center table-striped mb-0">
-
                                 <thead>
                                     <tr>
+
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">#</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Ad Soyad</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Tur Rotası</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Kaç Kişi?</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Açıklama</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Durum</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Telefon</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Mail Adresi</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Durum</th>
                                     </tr>
                                 </thead>
                                 <tbody class="border-top">
-                                    @foreach (var item in Model)
+                                    @foreach (var item in Model.OrderByDescending(x => x.ReservationDate))
                                     {
+                                        count++;
                                         <tr>
+                                            <td class="align-middle" width="80px">
+                                                <h6 class="mb-0 font-weight-bold text-s">@count</h6>
+                                            </td>
                                             <td class="align-middle" width="200px">
-                                                <h6 class="mb-0 font-weight-bold text-s">@item.AppUser.Name @item.AppUser.Surname</h6>
+                                                <h6 class="mb-0  text-s">@item.AppUser.Name @item.AppUser.Surname</h6>
                                             </td>
                                             <td class="align-middle" width="200px">
                                                 <p class="text-s mb-0">@item.Destination.City</p>
@@ -51,6 +57,11 @@
                                             </td>
                                             <td class="align-middle">
                                                 <span class=" text-s mb-0">@item.Description</span>
+                                            </td>
+                                            <td width="150px" class="align-middle color-palette-set  text-center text-md">
+                                                <div class="color-palette bg-success">
+                                                    <span> @item.Status </span>
+                                                </div>
                                             </td>
                                             <td class="align-middle " width="150px">
                                                 <span class=" mb-0">
@@ -62,11 +73,7 @@
                                                     @item.AppUser.Email
                                                 </span>
                                             </td>
-                                            <td width="150px" class="align-middle color-palette-set  text-center text-md">
-                                                <div class="color-palette bg-success">
-                                                    <span> @item.Status </span>
-                                                </div>
-                                            </td>
+                                            
                                         </tr>
                                     }
                                 </tbody>

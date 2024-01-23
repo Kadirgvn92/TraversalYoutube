@@ -10,20 +10,20 @@
     <div class="content">
         <div class="container-fluid">
             <br />
-            <h4 class="page-title">Rotalar Ekranı</h4>
+            <h4 class="page-title">Yorum Ekranı</h4>
             <br />
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Rotalar</div>
+                            <div class="card-title">Yorumlar</div>
                         </div>
                         <div class="card-body">
                             <div class="card-sub">
-                                Rotalar kısmını bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
+                                Yorumlar kısmını bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
                             </div>
                             <br />
-                            <table class="table align-items-center mb-0">
+                            <table class="table align-items-center table-striped mb-0">
 
                                 <thead>
                                     <tr>
@@ -51,7 +51,7 @@
                                                 <span class=" text-s  mb-0">@(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy"))</span>
                                             </td>
                                             <td width="60px" class="align-middle">
-                                                <a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger ">Sil</a>
+                                                <a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn bg-gradient-danger ">Sil</a>
                                             </td>
                                         </tr>
                                     }

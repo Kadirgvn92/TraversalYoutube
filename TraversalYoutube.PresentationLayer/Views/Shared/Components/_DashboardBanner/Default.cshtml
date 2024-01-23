@@ -31,27 +31,31 @@
                             <tr>
                                 <td>@item.AppUser.Name @item.AppUser.Surname</td>
                                 <td>@item.Destination.City</td>
-                                <td>
-                                    @if (item.Status == "Tamamlandı")
-                                    {
-                                        <span class="badge badge-primary text-s">@item.Status</span>
+                                <td width="150px" class="align-middle color-palette-set  text-center text-md">
+                                    @{
+                                        string statusColorClass = "";
+                                        switch (item.Status)
+                                        {
+                                            case "Onay Bekliyor":
+                                                statusColorClass = "color-palette bg-warning text-dark";
+                                                break;
+                                            case "Onaylandı":
+                                                statusColorClass = "color-palette bg-success text-light";
+                                                break;
+                                            case "İptal Edildi":
+                                                statusColorClass = "color-palette bg-danger text-light";
+                                                break;
+                                            case "Tamamlandı":
+                                                statusColorClass = "color-palette bg-secondary text-light";
+                                                break;
+                                            default:
+                                                statusColorClass = "color-palette bg-primary text-light";
+                                                break;
+                                        }
                                     }
-                                    else if (item.Status == "Onay Bekliyor")
-                                    {
-                                        <span class="badge badge-warning text-s">@item.Status</span>
-                                    }
-                                    else if (item.Status == "Onaylandı")
-                                    {
-                                        <span class="badge badge-success text-s">@item.Status</span>
-                                    }
-                                    else if (item.Status == "İptal Edildi")
-                                    {
-                                        <span class="badge badge-danger text-s">@item.Status</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge badge-warning text-s">@item.Status</span>
-                                    }
+                                    <div class=" @statusColorClass">
+                                        <span> @item.Status </span>
+                                    </div>
 
                                 </td>
                             </tr>
@@ -62,8 +66,8 @@
             <!-- /.table-responsive -->
         </div>
         <!-- /.card-body -->
-        <div class="card-footer text-center bg-warning text-primary">
-            <a href="javascript:">Tüm Rezervasyonları Görüntüle</a>
+        <div class="card-footer text-center bg-secondary text-primary">
+            <a href="/Admin/Reservation/Index/">Tüm Rezervasyonları Görüntüle</a>
         </div>
         <!-- /.card-footer -->
     </div>

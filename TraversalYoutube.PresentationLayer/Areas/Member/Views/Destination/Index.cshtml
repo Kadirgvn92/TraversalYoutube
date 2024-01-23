@@ -16,20 +16,23 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6 class="font-weight-bolder">Tur Rotalarım</h6>
+                            <h4 class="font-weight-bolder">Tur Rotalarım</h4>
+                            <br />
                             <form asp-action="Index" method="get" asp-area="Member">
-                                <div>
-                                    <p>
-                                        Lütfen aranacak turu giriniz :
-                                    </p>
-                                    <input class="mb-2 rounded" name="searchString" value="@ViewData["CurrentFilter"]" />
+                                <div class="align-middle">
+                                    <span>Aramak istediğiniz tur rotasını giriniz..</span>
+                                    <div class="align-middle align-self-center align-items-center mt-2">
+                                        <input class="mb-3 rounded align-middle"name="searchString" value="@ViewData["CurrentFilter"]" />
+                                        &nbsp;
+                                        <input type="submit" value="Şehir Ara" class="btn btn-primary" />
+                                    </div>
                                 </div>
-                                <input type="submit" value="Şehir Ara" class="btn btn-primary" />
                             </form>
+                            <br />
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
+                                <table class="table align-items-center table-striped mb-0">
 
                                     <thead>
                                         <tr>
@@ -69,8 +72,8 @@
                                                         @item.Capacity
                                                     </a>
                                                 </td>
-                                                <td class="align-middle">
-                                                    <a href="#" class="btn btn-outline-info ">Detaylar</a>
+                                                <td class="align-middle text-center">
+                                                    <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn bg-gradient-info ">Detaylar</a>
                                                 </td>
                                             </tr>
                                         }

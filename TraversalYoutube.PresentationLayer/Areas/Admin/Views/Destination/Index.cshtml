@@ -31,7 +31,7 @@
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Gün / Gece</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Fiyat</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Açıklama</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder  text-center">Kapasite</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Kapasite</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sitede Gör</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Güncelle</th>
@@ -43,8 +43,9 @@
                                         <tr>
                                             <td width="200px">
                                                 <div class="d-flex px-2 py-1">
-                                                    <div>
-                                                        <img src="/destinationimages/@item.Image" class="rounded-circle me-3" style="width:80px;height:80px;" alt="user1">
+                                                    <div >
+                                                        <img src="/destinationimages/@item.Image" class="rounded me-3" style="width:100px;height:100px;" alt="user1">
+                                                        
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center ml-4">
                                                         <h6 class="mb-0 font-weight-bold  text-s">@item.City</h6>
@@ -52,29 +53,27 @@
                                                 </div>
                                             </td>
                                             <td class="align-middle" width="130px">
-                                                <p class="text-s font-weight-bold mb-0">@item.DayNight</p>
+                                                <p class="text-s  mb-0">@item.DayNight</p>
                                             </td>
-                                            <td class="align-middle ">
-                                                <div class="text-center color-palette text-lg rounded bg-success">
-                                                    @item.Price
-                                                </div>
+                                            <td class="align-middle text-center" width="120px">
+                                                <span class="text-s  mb-0">@item.Price ₺</span>
                                             </td>
                                             <td class="align-middle">
-                                                <span class=" text-s font-weight-bold mb-0">@item.Description</span>
+                                                <span class=" text-s  mb-0">@item.Description</span>
                                             </td>
                                             <td width="80px" class="align-middle text-center">
-                                                <span class="text-secondary font-weight-bold text-lg mb-0 text-center">
+                                                <span class="text-secondary  text-lg mb-0 text-center">
                                                     @item.Capacity
                                                 </span>
                                             </td>
                                             <td width="120px" class="align-middle">
-                                                <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info ">Sitede Gör</a>
+                                                <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn bg-gradient-warning ">Sitede Gör</a>
                                             </td>
                                             <td width="60px" class="align-middle">
-                                                <a href="/Admin/Destination/DeleteDestination/@item.DestinationID" class="btn btn-outline-danger ">Sil</a>
+                                                <a href="/Admin/Destination/DeleteDestination/@item.DestinationID" class="btn bg-gradient-danger ">Sil</a>
                                             </td>
                                             <td width="80px" class="align-middle">
-                                                <a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn btn-outline-success ">Güncelle</a>
+                                                <a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn bg-gradient-info ">Güncelle</a>
                                             </td>
                                         </tr>
                                     }

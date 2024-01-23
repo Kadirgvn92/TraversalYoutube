@@ -23,15 +23,15 @@
                                 Rehberlerin bilgilerini bu sayfada görüntüleyebilir ve güncelleyebilirsiniz
                             </div>
                             <br />
-                            <table class="table align-items-center mb-0">
+                            <table class="table align-items-center table-striped mb-0">
 
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Ad Soyad</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder  ps-2">Açıklama </th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Durum</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Sil</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder ">Düzenle</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Durum</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
+                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Düzenle</th>
                                     </tr>
                                 </thead>
                                 <tbody class="border-top">
@@ -54,20 +54,20 @@
 
                                             @if (item.Status == true)
                                             {
-                                                <td class="align-middle">
-                                                    <a href="/Admin/Guide/ChangeToFalse/@item.GuideID" class="btn btn-toggle btn-outline-warning">Pasif Yap</a>
+                                                <td class="align-middle" width="120px">
+                                                    <a href="/Admin/Guide/ChangeToFalse/@item.GuideID" class="btn btn-toggle bg-gradient-warning">Pasif Yap</a>
                                                 </td>
                                             }
                                             else
                                             {
-                                                <td class="align-middle">
-                                                    <a href="/Admin/Guide/ChangeToTrue/@item.GuideID" class="btn btn-toggle btn-outline-success">Aktif Yap</a>
+                                                <td class="align-middle" width="120px">
+                                                    <a href="/Admin/Guide/ChangeToTrue/@item.GuideID" class="btn btn-toggle bg-gradient-success">Aktif Yap</a>
                                                 </td>
                                             }
-                                            <td width="150px" class="align-middle">
+                                            <td width="120px" class="align-middle text-center">
                                                 <a href="/Admin/Guide/DeleteGuide/@item.GuideID" class="btn bg-gradient-danger ">Sil</a>
                                             </td>
-                                            <td width="150px" class="align-middle">
+                                            <td width="120px" class="align-middle text-center">
                                                 <a href="/Admin/Guide/EditGuide/@item.GuideID" class="btn bg-gradient-info ">Düzenle</a>
                                             </td>
                                         </tr>

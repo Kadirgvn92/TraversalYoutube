@@ -15,7 +15,7 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="~/AdminLTE-3.2.0/dist/img/11.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="~/AdminLTE-3.2.0/dist/img/1.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="/Admin/Dashboard/Index" class="d-block">Admin</a>
@@ -50,12 +50,45 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/Reservation/Index" class="nav-link">
+                    <a href="" class="nav-link">
                         <i class="fi fi-sr-calendar-clock"></i>&ensp;
                         <p>
                             Rezervasyonlar
+                            <i class="right fas fa-angle-down"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="/Admin/Reservation/Index" class="nav-link">
+                                <i class="far fas fa-angle-right nav-icon"></i>
+                                <p>Tüm Reservasyonlar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/Reservation/AcceptedReservation" class="nav-link">
+                                <i class="far fas fa-angle-right nav-icon"></i>
+                                <p>Onaylanan Res.</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/Reservation/OldReservation" class="nav-link">
+                                <i class="far fas fa-angle-right nav-icon"></i>
+                                <p>Tamamlanan Res.</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/Reservation/ApprovalReservation" class="nav-link">
+                                <i class="far fas fa-angle-right nav-icon"></i>
+                                <p>Onay Bekleyen Res.</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/Reservation/CanceledReservation" class="nav-link">
+                                <i class="far fas fa-angle-right nav-icon"></i>
+                                <p>İptal Edilen Res.</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="/Admin/Comment/Index" class="nav-link">
