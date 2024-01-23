@@ -17,7 +17,5 @@ public class UserRegisterViewModel
     public string  ImageUrl{ get; set; }
 
     public string  Password{ get; set; }
-
-    [Compare("Password",ErrorMessage = "Şifreler uyumsuz")]
     public string ConfirmPassword { get; set; }
 }

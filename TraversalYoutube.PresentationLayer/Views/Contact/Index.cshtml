@@ -7,6 +7,10 @@
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
 <section class="w3l-about-breadcrumb text-left">
     <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
         <div class="container py-2">
@@ -61,3 +65,18 @@
     </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $('form').submit(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Mesaj gönderildi",
+            showConfirmButton: false,
+            timer: 1200
+        });
+        this.submit();
+    });
+</script>

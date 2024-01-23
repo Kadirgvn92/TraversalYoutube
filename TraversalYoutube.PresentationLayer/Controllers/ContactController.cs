@@ -24,7 +24,7 @@ public class ContactController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult Index(SendMessageDTO dTO) 
+    public async Task<IActionResult> Index(SendMessageDTO dTO) 
     {
         if(ModelState.IsValid)
         {
@@ -37,6 +37,7 @@ public class ContactController : Controller
                 Subject = dTO.Subject,
                 MessageDate = Convert.ToDateTime(DateTime.Now.ToShortDateString())
             }); 
+            await Task.Delay(2000);
             return RedirectToAction("Index","Default");
         }
         return View();

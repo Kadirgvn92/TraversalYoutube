@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using TraversalYoutube.DTOLayer.DTOs.AppUserDTOs;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Models;
 
@@ -25,7 +26,7 @@ public class LoginController : Controller
         return View();
     }
     [HttpPost]
-    public async Task<IActionResult> SignUp(UserRegisterViewModel p)
+    public async Task<IActionResult> SignUp(AppUserRegisterDTO p)
     {
         AppUser appUser = new AppUser()
         {
@@ -36,11 +37,12 @@ public class LoginController : Controller
             PhoneNumber = p.PhoneNumber,
             ImageUrl = "default.png"
         };
-        if(p.Password == p.ConfirmPassword) 
+        if(ModelState.IsValid) 
         {
             var result = await _userManager.CreateAsync(appUser,p.Password);
             if (result.Succeeded) 
             {
+                ViewBag.success = "Kayıt başarılı şekilde gerçekleşmiştir.";
                 return RedirectToAction("SignIn");
             }
             else

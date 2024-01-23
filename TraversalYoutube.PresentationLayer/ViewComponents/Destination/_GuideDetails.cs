@@ -12,9 +12,9 @@ public class _GuideDetails: ViewComponent
         _guideService = guideService;
     }
 
-    public IViewComponentResult Invoke()
+    public IViewComponentResult Invoke(int id)
     {
-        var values = _guideService.TGetByID(2);
+        var values = _guideService.TGetByID(id);
         return View(values);
     }
 }

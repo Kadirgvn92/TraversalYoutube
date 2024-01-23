@@ -1,5 +1,5 @@
 ﻿
-@model UserRegisterViewModel
+@model AppUserRegisterDTO
 
 @{
     Layout = null;
@@ -36,8 +36,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 text-center mx-auto">
-                        <h1 class="text-white mb-2 mt-5">Welcome!</h1>
-                        <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+                        <h1 class="text-white mb-2 mt-5">Traversal Dünyasına Hoşgelsiniz!</h1>
+                        <p class="text-lead text-white">Ücretsiz olarak kayıt olun ve olağanüstü deneyime sizde katılın.</p>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0">
                         <div class="card-header text-center pt-4">
-                            <h5>Register with</h5>
+                            <h5>İle Kayıt Olun</h5>
                         </div>
                         <div class="card-body">
                             <form method="post" role="form text-left">
@@ -60,28 +60,29 @@
                                     <span asp-validation-for="Surname" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" required asp-for="Username" class="form-control mb-2" placeholder="Username" aria-label="Username">
+                                    <input type="text"  asp-for="Username" class="form-control mb-2" placeholder="Username" aria-label="Username">
                                     <span asp-validation-for="Username" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" required asp-for="Mail" class="form-control mb-2" placeholder="Email" aria-label="Email">
+                                    <input type="email"  asp-for="Mail" class="form-control mb-2" placeholder="Email" aria-label="Email">
                                     <span asp-validation-for="Mail" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" required asp-for="PhoneNumber" class="form-control mb-2" placeholder="Telefon Numarası" aria-label="Telefon">
+                                    <input type="text"  asp-for="PhoneNumber" class="form-control mb-2" placeholder="Telefon Numarası" aria-label="Telefon">
                                     <span asp-validation-for="PhoneNumber" class="text-danger"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" required asp-for="Password" class="form-control mb-2" placeholder="Password" aria-label="Password">
-                                    <span asp-validation-for="Password" class="text-danger"> </span>
+                                    <input type="password"  asp-for="Password" class="form-control mb-2" placeholder="Şifre" aria-label="Password">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" required asp-for="ConfirmPassword" class="form-control mb-2" placeholder="Confirm Password" aria-label="Password">
+                                    <input type="password"  asp-for="ConfirmPassword" class="form-control mb-2" placeholder="Şifre Tekrar" aria-label="Password">
+                                    <span asp-validation-for="Password" class="text-danger"> </span>
                                     <span asp-validation-for="ConfirmPassword" class="text-danger"> </span>
                                 </div>
 
                                 <div class="text-danger" asp-validation-summary="ModelOnly">
                                    </div>
+
                                 <div class="form-check form-check-info text-left">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                                     <label class="form-check-label" for="flexCheckDefault">
@@ -91,7 +92,7 @@
                                 <div class="text-center">
                                     <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Kayıt Ol</button>
                                 </div>
-                                <p class="text-sm mt-3 mb-0">Already have an account? <a href="/Login/SignIn/" class="text-dark font-weight-bolder">Sign in</a></p>
+                                <p class="text-sm mt-3 mb-0">Zaten bir hesabın var mı? <a href="/Login/SignIn/" class="text-dark font-weight-bolder">Giriş Yap</a></p>
                             </form>
                         </div>
                     </div>
@@ -99,10 +100,13 @@
             </div>
         </div>
     </section>
-    <script src="~/soft-ui-dashboard/assets/js/core/popper.min.js"></script>
+
+
+   <script src="~/soft-ui-dashboard/assets/js/core/popper.min.js"></script>
     <script src="~/soft-ui-dashboard/assets/js/core/bootstrap.min.js"></script>
     <script src="~/soft-ui-dashboard/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="~/soft-ui-dashboard/assets/js/plugins/smooth-scrollbar.min.js"></script>
+
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {

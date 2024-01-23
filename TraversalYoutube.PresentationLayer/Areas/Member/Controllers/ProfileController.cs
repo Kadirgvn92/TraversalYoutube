@@ -15,7 +15,7 @@ public class ProfileController : Controller
     {
         _userManager = userManager;
     }
-    [HttpGet] 
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         var values = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -30,18 +30,18 @@ public class ProfileController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(UserEditViewModel userEditViewModel)
     {
-        var user =await _userManager.FindByNameAsync(User.Identity.Name);
-        if (userEditViewModel.Image != null)
-        {
-            var resource = Directory.GetCurrentDirectory();
-            var extension = Path.GetExtension(userEditViewModel.Image.FileName);
-            var imagename = Guid.NewGuid() + extension;
-            var savelocation = resource + "/wwwroot/userimages/" + imagename;
-            var stream = new FileStream(savelocation, FileMode.Create);
-            await userEditViewModel.Image.CopyToAsync(stream);
-            user.ImageUrl = imagename;
-        }
-        
+        var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+
+        var resource = Directory.GetCurrentDirectory();
+        var extension = Path.GetExtension(userEditViewModel.Image.FileName);
+        var imagename = Guid.NewGuid() + extension;
+        var savelocation = resource + "/wwwroot/userimages/" + imagename;
+        var stream = new FileStream(savelocation, FileMode.Create);
+        await userEditViewModel.Image.CopyToAsync(stream);
+        user.ImageUrl = imagename;
+
+
         user.Name = userEditViewModel.name;
         user.Surname = userEditViewModel.surname;
         user.PhoneNumber = userEditViewModel.phonenumber;
@@ -56,11 +56,10 @@ public class ProfileController : Controller
             }
             else
             {
-                await Task.Delay(2000);
                 return RedirectToAction("Index", "Profile", new { area = "Member" });
             }
         }
-       
-        return View(); 
+
+        return View();
     }
 }

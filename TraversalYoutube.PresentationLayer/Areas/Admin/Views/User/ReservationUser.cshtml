@@ -26,7 +26,16 @@
                             </div>
                             <br />
                             <table class="table align-items-center mb-0">
-
+                                 @if (!Model.Any())
+                                {
+                                    <div class="container mt-3">
+                                        <hr class="" />
+                                        <h5 class="text-center font-weight-bold text-danger">Misafirin daha önce yaptığı rezervasyon bulunmamaktadır.</h5>
+                                        <br />
+                                    </div>
+                                }
+                                else
+                                {
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Ad Soyad</th>
@@ -57,17 +66,13 @@
                                                 <span class=" text-s mb-0">@item.ReservationDate.Date.ToShortDateString()</span>
                                             </td>
                                             <td width="100px" class="align-middle">
-                                                <a href="#" class="btn btn-outline-info ">Detaylar</a>
+                                                <a href="#" class="btn bg-gradient-info ">Detaylar</a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
+                                }
                             </table>
-                            <br />
-                            <div>
-                                <a href="/Login/SignUp/" class="btn btn-primary">Yeni Kullanıcı Oluşturun</a>
-                            </div>
-
                         </div>
                     </div>
                 </div>

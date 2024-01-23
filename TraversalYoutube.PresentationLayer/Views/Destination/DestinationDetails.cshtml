@@ -56,19 +56,18 @@
             </div>
             <div class="single-post-content">
                 <p class="alphabet mb-4">
-                    <span class="big-letter">A</span> @Model.Details1
+                    <span class="big-letter">@Model.Details1.Substring(0,1)</span> @Model.Details1.Substring(1)
                 </p>
                 <blockquote class="blockquote my-5">
                     <div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span></div>
                     @Model.Description
-                    
                 </blockquote>
                 <div class="sing-post-thumb mb-5 row pt-3">
                     <div class="col-sm-6">
-                        <a href="#url"><img src="/destinationimages/@Model.Image" style="height:500px;width:450px" class="img-fluid radius-image" alt=""></a>
+                        <img src="/destinationimages/@Model.Image" style="height:500px;width:450px" class="img-fluid radius-image" alt="">
                     </div>
                     <div class="col-sm-6 mt-sm-0 mt-3">
-                        <a href="#url"><img src="@Model.Image2" class="img-fluid radius-image" style="height:500px;width:450px" alt=""></a>
+                        <img src="@Model.Image2" class="img-fluid radius-image" style="height:500px;width:450px" alt="">
                     </div>
                 </div>
                 <br />
@@ -93,7 +92,7 @@
                 </div>
 
                 <!--//author-card-->
-                @await Component.InvokeAsync("_GuideDetails")
+                @await Component.InvokeAsync("_GuideDetails", new { id = Model.GuideID })
                 <!--//author-card-->
                 @await Component.InvokeAsync("_CommentListPartial",new { id = ViewBag.i })
                
