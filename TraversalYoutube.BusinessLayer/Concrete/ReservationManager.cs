@@ -17,22 +17,22 @@ public class ReservationManager : IReservationService
         _reservationDal = reservationDal;
     }
 
-    public List<Reservation> GetAllReservation(int id)
+    public List<Reservation> TGetAllReservation(int id)
     {
         return _reservationDal.GetAllReservation(id); 
     }
 
-    public List<Reservation> GetListWithReservationByAccepted(int id)
+    public List<Reservation> TGetListWithReservationByAccepted(int id)
     {
         return _reservationDal.GetListWithReservationByAccepted(id);    
     }
 
-    public List<Reservation> GetListWithReservationByPrevious(int id)
+    public List<Reservation> TGetListWithReservationByPrevious(int id)
     {
         return _reservationDal.GetListWithReservationByPrevious(id);
     }
 
-    public List<Reservation> GetListWithReservationByWaitApproval(int id)
+    public List<Reservation> TGetListWithReservationByWaitApproval(int id)
     {
        return  _reservationDal.GetListWithReservationByWaitApproval(id);
     }
@@ -60,5 +60,30 @@ public class ReservationManager : IReservationService
     public void TUpdate(Reservation entity)
     {
         _reservationDal.Update(entity);
+    }
+
+    public List<Reservation> TGetListWithReservationByCancel(int id)
+    {
+        return _reservationDal.GetListWithReservationByCancel(id);
+    }
+
+    public List<Reservation> TGetListWithReservationByWaitApproval()
+    {
+        return _reservationDal.GetListWithReservationByWaitApproval();
+    }
+
+    public List<Reservation> TGetListWithReservationByAccepted()
+    {
+        return _reservationDal.GetListWithReservationByAccepted();
+    }
+
+    public List<Reservation> TGetListWithReservationByPrevious()
+    {
+       return _reservationDal.GetListWithReservationByPrevious();
+    }
+
+    public List<Reservation> TGetListWithReservationByCancel()
+    {
+       return _reservationDal.GetListWithReservationByCancel();
     }
 }

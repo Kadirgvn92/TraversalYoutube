@@ -50,7 +50,7 @@ public class UserController : Controller
     }
     public IActionResult ReservationUser(int id)
     {
-        var values = _reservationService.GetListWithReservationByPrevious(id);
+        var values = _reservationService.TGetListWithReservationByPrevious(id);
         return View(values);
     }
 }

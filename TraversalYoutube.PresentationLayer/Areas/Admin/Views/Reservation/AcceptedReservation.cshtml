@@ -1,7 +1,8 @@
-﻿@model List<Reservation>
+﻿
+@model List<Reservation>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "AcceptedReservation";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -15,11 +16,11 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Rezervasyon</div>
+                            <div class="card-title">Onaylanan Rezervasyon Ekranı</div>
                         </div>
                         <div class="card-body">
                             <div class="card-sub">
-                                Reservasyonları bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
+                                Onaylanan Reservasyonları bu sayfada görüntüleyebilir veya güncelleyebilirsiniz.
                             </div>
                             <br />
                             <table class="table align-items-center table-striped mb-0">
@@ -33,8 +34,6 @@
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Telefon</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder ">Mail Adresi</th>
                                         <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Durum</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Sil</th>
-                                        <th class="text-uppercase text-primary text-sm font-weight-bolder text-center">Güncelle</th>
                                     </tr>
                                 </thead>
                                 <tbody class="border-top">
@@ -64,47 +63,14 @@
                                                 </span>
                                             </td>
                                             <td width="150px" class="align-middle color-palette-set  text-center text-md">
-                                                @{
-                                                    string statusColorClass = "";
-                                                    switch (item.Status)
-                                                    {
-                                                        case "Onay Bekliyor":
-                                                            statusColorClass = "color-palette bg-warning text-dark";
-                                                            break;
-                                                        case "Onaylandı":
-                                                            statusColorClass = "color-palette bg-success text-light";
-                                                            break;
-                                                        case "İptal Edildi":
-                                                            statusColorClass = "color-palette bg-danger text-light";
-                                                            break;
-                                                        case "Tamamlandı":
-                                                            statusColorClass = "color-palette bg-secondary text-light";
-                                                            break;
-                                                        default:
-                                                            statusColorClass = "color-palette bg-primary text-light";
-                                                            break;
-                                                    }
-                                                }
-                                                <div class=" @statusColorClass">
-                                                    <span > @item.Status </span>
+                                                <div class="color-palette bg-success">
+                                                    <span> @item.Status </span>
                                                 </div>
-                                                
-                                            </td>
-                                            <td width="60px" class="align-middle">
-                                                <a href="/Admin/Reservation/DeleteReservation/@item.ReservationID" class="btn btn-outline-danger ">Sil</a>
-                                            </td>
-                                            <td width="80px" class="align-middle">
-                                                <a href="/Admin/Reservation/UpdateReservation/@item.ReservationDate" class="btn btn-outline-success ">Güncelle</a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                            <br />
-                            <div>
-                                <a href="/Admin/Reservation/AddReservation/" class="btn btn-primary">Yeni Rezervasyon Oluşturun</a>
-                            </div>
-
                         </div>
                     </div>
                 </div>

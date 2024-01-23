@@ -38,6 +38,12 @@ public class EfReservationDal : GenericRepository<Reservation>, IReservationDal
         return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Onay Bekliyor" && x.AppUserId == id).ToList();
     }
 
+    public List<Reservation> GetListWithReservationByCancel(int id)
+    {
+        using var context = new Context();
+        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "İptal Edildi" && x.AppUserId == id).ToList();
+    }
+
     public List<Reservation> GetAll()
     {
         using var context = new Context();
@@ -45,4 +51,29 @@ public class EfReservationDal : GenericRepository<Reservation>, IReservationDal
                                    .Include(x => x.AppUser)                        
                                    .ToList();
     }
- }
+
+    public List<Reservation> GetListWithReservationByWaitApproval()
+    {
+        using var context = new Context();
+        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Onay Bekliyor").ToList();
+    }
+
+    public List<Reservation> GetListWithReservationByAccepted()
+    {
+        using var context = new Context();
+        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Onaylandı").Include(x => x.AppUser)
+                                   .ToList();
+    }
+
+    public List<Reservation> GetListWithReservationByPrevious()
+    {
+        using var context = new Context();
+        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Tamamlandı").Include(x => x.AppUser)
+                                   .ToList();
+    }
+    public List<Reservation> GetListWithReservationByCancel()
+    {
+        using var context = new Context();
+        return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "İptal Edildi").ToList();
+    }
+}

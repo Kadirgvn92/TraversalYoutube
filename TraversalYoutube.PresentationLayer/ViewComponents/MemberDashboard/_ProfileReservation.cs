@@ -20,7 +20,7 @@ public class _ProfileReservation :ViewComponent
     public async Task<IViewComponentResult>  InvokeAsync()
     {
         var values2 = await _userManager.FindByNameAsync(User.Identity.Name);
-        var values = reservationManager.GetAllReservation(values2.Id);
+        var values = reservationManager.TGetAllReservation(values2.Id);
         return View(values);
     }
 }
