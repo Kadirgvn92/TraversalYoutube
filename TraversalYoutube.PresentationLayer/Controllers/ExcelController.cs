@@ -44,19 +44,22 @@ public class ExcelController : Controller
         guideModels = _mapper.Map<List<GuideModel>>(guides);
         return guideModels;
     }
-    public List<CommentModel> CommentList()
+    public List<ReservationModel> ReservationList()
     {
-        List<CommentModel> commentModels = new List<CommentModel>();
+        List<ReservationModel> resModel = new List<ReservationModel>();
         using var context = new Context();
-        commentModels = context.Comments.Select(x => new CommentModel
+        resModel = context.Reservations.Select(x => new ReservationModel
         {
-            Username = x.AppUser.UserName,
-            Comment = x.CommentContent,
-            Date = x.CommentDate,
+            Name = x.AppUser.Name + " " + x.AppUser.Surname,
+            PhoneNumber = x.AppUser.PhoneNumber,
+            Mail = x.AppUser.Email,
+            Description = x.Description,
+            PersonCount = x.PersonCount,
+            ReservationDate = x.ReservationDate,
+            Status = x.Status,
             Destination = x.Destination.City
-
         }).ToList();
-        return commentModels;
+        return resModel;
     }
     public IActionResult Index()
     {
@@ -174,24 +177,32 @@ public class ExcelController : Controller
             }
         }
     }
-    public IActionResult CommentExcelReport()
+    public IActionResult ReservationExcelReport()
     {
         using (var workbook = new XLWorkbook())
         {
-            var workSheet = workbook.Worksheets.Add("Yorum Listesi");
-            workSheet.Cell(1, 1).Value = "Kullanıcı Adı";
+            var workSheet = workbook.Worksheets.Add("Reservasyon Listesi");
+            workSheet.Cell(1, 1).Value = "Ad Soyad Adı";
             workSheet.Cell(1, 2).Value = "Tur Rotası";
-            workSheet.Cell(1, 3).Value = "Yorum";
-            workSheet.Cell(1, 4).Value = "Yorum Tarihi";
+            workSheet.Cell(1, 3).Value = "Kaç Kişi?";
+            workSheet.Cell(1, 4).Value = "Açıklama";
+            workSheet.Cell(1, 5).Value = "Durum";
+            workSheet.Cell(1, 6).Value = "Telefon";
+            workSheet.Cell(1, 7).Value = "Mail";
+            workSheet.Cell(1, 8).Value = "Tarih";
 
 
             int rowCount = 2;
-            foreach (var item in CommentList())
+            foreach (var item in ReservationList())
             {
-                workSheet.Cell(rowCount, 1).Value = item.Username;
+                workSheet.Cell(rowCount, 1).Value = item.Name;
                 workSheet.Cell(rowCount, 2).Value = item.Destination;
-                workSheet.Cell(rowCount, 3).Value = item.Comment;
-                workSheet.Cell(rowCount, 4).Value = item.Date;
+                workSheet.Cell(rowCount, 3).Value = item.PersonCount;
+                workSheet.Cell(rowCount, 4).Value = item.Description;
+                workSheet.Cell(rowCount, 5).Value = item.Status;
+                workSheet.Cell(rowCount, 6).Value = item.PhoneNumber;
+                workSheet.Cell(rowCount, 7).Value = item.Mail;
+                workSheet.Cell(rowCount, 8).Value = item.ReservationDate.Date.ToShortDateString();
                 rowCount++;
             }
 
@@ -199,8 +210,12 @@ public class ExcelController : Controller
 
             workSheet.Column(1).Width = 30;  
             workSheet.Column(2).Width = 30;
-            workSheet.Column(3).Width = 30;
-            workSheet.Column(4).Width = 30;
+            workSheet.Column(3).Width = 20;
+            workSheet.Column(4).Width = 50;
+            workSheet.Column(5).Width = 30;
+            workSheet.Column(6).Width = 30;
+            workSheet.Column(7).Width = 30;
+            workSheet.Column(8).Width = 30;
 
             var range = workSheet.RangeUsed();
             range.Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
@@ -209,7 +224,7 @@ public class ExcelController : Controller
             {
                 workbook.SaveAs(steam);
                 var content = steam.ToArray();
-                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "YorumListesi.xlsx");
+                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ReservasyonListesi.xlsx");
             }
         }
     }

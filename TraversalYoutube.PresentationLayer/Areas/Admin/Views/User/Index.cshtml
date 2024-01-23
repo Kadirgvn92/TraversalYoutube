@@ -1,5 +1,4 @@
-﻿
-@model List<AppUser>
+﻿@model List<AppUser>
 
 @{
     ViewData["Title"] = "Index";
@@ -52,7 +51,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="align-middle" >
+                                            <td class="align-middle">
                                                 <p class="text-s  mb-0">@item.UserName</p>
                                             </td>
                                             <td class="align-middle">
@@ -71,7 +70,7 @@
                                                 <a href="/Admin/User/DeleteUser/@item.Id" class="btn bg-gradient-danger ">Sil</a>
                                             </td>
                                             <td width="80px" class="align-middle">
-                                                <a href="/Admin/User/Comment/@item.Id" class="btn bg-gradient-success ">Yorumlar</a>
+                                                <a href="/Admin/User/CommentUser/@item.Id" class="btn bg-gradient-success ">Yorumlar</a>
                                             </td>
                                             <td width="150px" class="align-middle">
                                                 <a href="/Admin/User/ReservationUser/@item.Id" class="btn bg-gradient-secondary ">Tur Geçmişi</a>
@@ -79,6 +78,7 @@
                                         </tr>
                                     }
                                 </tbody>
+
                             </table>
                             <br />
                             <div>

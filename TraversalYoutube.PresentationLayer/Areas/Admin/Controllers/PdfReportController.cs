@@ -3,6 +3,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.DataAccessLayer.Concrete;
+using TraversalYoutube.DTOLayer.DTOs.DestinationDTOs;
 using TraversalYoutube.PresentationLayer.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
@@ -16,13 +17,13 @@ public class PdfReportController : Controller
         _mapper = mapper;
     }
 
-    public List<DestinationModel> DestinationList()
+    public List<DestinationDTO> DestinationList()
     {
-        List<DestinationModel> destinationModels = new List<DestinationModel>();
+        List<DestinationDTO> destinationModels = new List<DestinationDTO>();
         using var context = new Context();
 
         var destinations = context.Destinations.ToList();
-        destinationModels = _mapper.Map<List<DestinationModel>>(destinations);
+        destinationModels = _mapper.Map<List<DestinationDTO>>(destinations);
 
         return destinationModels;
     }
@@ -31,14 +32,18 @@ public class PdfReportController : Controller
     {
         List<UserModel> guestModels = new List<UserModel>();
         using var context = new Context();
-        guestModels = _mapper.Map<List<UserModel>>(guestModels);
+
+        var guests = context.Users.ToList();
+        guestModels = _mapper.Map<List<UserModel>>(guests);
         return guestModels;
     }
     public List<GuideModel> GuideList()
     {
         List<GuideModel> guideModels = new List<GuideModel>();
         using var context = new Context();
-        guideModels = _mapper.Map<List<GuideModel>>(guideModels);
+
+        var guideModels1 = context.Guides.ToList();
+        guideModels = _mapper.Map<List<GuideModel>>(guideModels1);
         return guideModels;
     }
     public List<CommentModel> CommentList()
@@ -94,15 +99,14 @@ public class PdfReportController : Controller
             string imagePath = Path.Combine(hostingEnvironment.WebRootPath, image);
 
             Image logo = Image.GetInstance(imagePath);
-            logo.ScaleAbsolute(100f, 100f); // Logo boyutunu ayarla
+            logo.ScaleAbsolute(100f, 100f); 
             logo.Alignment = Image.ALIGN_CENTER;
 
-            // Rapor başına logo ekle
             document.Add(logo);
 
             Paragraph title = new Paragraph($"Tur Rotaları - {pdfDate}");
             title.Alignment = Element.ALIGN_CENTER;
-            title.SpacingAfter = 10f; // Başlık ile logo arasında bir boşluk bırak
+            title.SpacingAfter = 10f; 
 
             document.Add(title);
 
@@ -116,7 +120,7 @@ public class PdfReportController : Controller
             foreach (var item in DestinationList())
             {
                 pdfTable.AddCell(item.City);
-                pdfTable.AddCell(item.DayNight.ToString());
+                pdfTable.AddCell(item.DayNight);
                 pdfTable.AddCell(item.Price.ToString());
                 pdfTable.AddCell(item.Capacity.ToString());
             }
@@ -130,7 +134,7 @@ public class PdfReportController : Controller
     public IActionResult GuestPDFReport()
     {
         string pdfDate = DateTime.Now.ToShortDateString();
-        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pdfreport/" + $"Yorum Listesi - {pdfDate}.pdf");
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pdfreport/" + $"Kullanıcılar Listesi - {pdfDate}.pdf");
         using (var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
         {
             Document document = new Document(PageSize.A4.Rotate());
@@ -150,7 +154,7 @@ public class PdfReportController : Controller
             // Rapor başına logo ekle
             document.Add(logo);
 
-            Paragraph title = new Paragraph($"Yorum Listesi - {pdfDate}");
+            Paragraph title = new Paragraph($"Kullanıcı Listesi - {pdfDate}");
             title.Alignment = Element.ALIGN_CENTER;
             title.SpacingAfter = 10f; // Başlık ile logo arasında bir boşluk bırak
 
@@ -185,12 +189,12 @@ public class PdfReportController : Controller
             document.Close();
 
         }
-        return File($"/pdfreport/Yorum Listesi - {pdfDate}.pdf", "application/pdf", $"Yorum Listesi - {pdfDate}.pdf");
+        return File($"/pdfreport/Kullanıcılar Listesi - {pdfDate}.pdf", "application/pdf", $"Kullanıcılar Listesi - {pdfDate}.pdf");
     }
     public IActionResult GuidePDFReport()
     {
         string pdfDate = DateTime.Now.ToShortDateString();
-        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pdfreport/" + $"Yorum Listesi - {pdfDate}.pdf");
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pdfreport/" + $"Rehber Listesi - {pdfDate}.pdf");
         using (var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
         {
             Document document = new Document(PageSize.A4.Rotate());
@@ -209,7 +213,7 @@ public class PdfReportController : Controller
 
             document.Add(logo);
 
-            Paragraph title = new Paragraph($"Yorum Listesi - {pdfDate}");
+            Paragraph title = new Paragraph($"Rehber Listesi - {pdfDate}");
             title.Alignment = Element.ALIGN_CENTER;
             title.SpacingAfter = 10f; 
 
@@ -245,7 +249,7 @@ public class PdfReportController : Controller
             document.Close();
 
         }
-        return File($"/pdfreport/Yorum Listesi - {pdfDate}.pdf", "application/pdf", $"Yorum Listesi - {pdfDate}.pdf");
+        return File($"/pdfreport/Rehber Listesi - {pdfDate}.pdf", "application/pdf", $"Rehber Listesi - {pdfDate}.pdf");
     }
     public IActionResult CommentPDFReport()
     {

@@ -30,18 +30,15 @@ public class DestinationController : Controller
     [HttpPost]
     public async Task<IActionResult> AddDestination(CreateDestinationViewModel destination)
     {
-        if (destination.Image != null)
-        {
-            var resource = Directory.GetCurrentDirectory();
-            var extension = Path.GetExtension(destination.Image.FileName);
-            var imagename = Guid.NewGuid() + extension;
-            var savelocation = resource + "/wwwroot/destinationimages/" + imagename;
-            var stream = new FileStream(savelocation, FileMode.Create);
-            await destination.Image.CopyToAsync(stream);
-            destination.imageurl = imagename;
-        }
-        destination.Image2 = "/Traversal-Liberty/assets/images/banner1.jpg";
-        destination.CoverImage = "/Traversal-Liberty/assets/images/banner4.jpg";
+
+        var resource = Directory.GetCurrentDirectory();
+        var extension = Path.GetExtension(destination.Image.FileName);
+        var imagename = Guid.NewGuid() + extension;
+        var savelocation = resource + "/wwwroot/destinationimages/" + imagename;
+        var stream = new FileStream(savelocation, FileMode.Create);
+        await destination.Image.CopyToAsync(stream);
+        destination.imageurl = imagename;
+
 
         Destination des = new Destination()
         {
@@ -53,9 +50,10 @@ public class DestinationController : Controller
             Status = true,
             Details1 = destination.Details1,
             Details2 = destination.Details2,
-            Image2 = "/Traversal-Liberty/assets/images/banner1.jpg",
-            CoverImage = "/Traversal-Liberty/assets/images/banner4.jpg",
-            Image = destination.imageurl
+            Image2 = "/Traversal-Liberty/assets/images/edinburg3.jpg",
+            CoverImage = "/Traversal-Liberty/assets/images/banner3.jpg",
+            Image = destination.imageurl,
+            GuideID = 6
         };
 
         _destinationService.TAdd(des);

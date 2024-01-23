@@ -1,0 +1,89 @@
+﻿@model List<Comment>
+
+@{
+    ViewData["Title"] = "CommentUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Kullanıcının Yorum Ekranı</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Yorumlar</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Kullanıcının daha önce gönderdiği yorumları bu sayfada görüntüleyebilirsiniz.
+                            </div>
+                            <table class="table align-items-center table-striped mb-0">
+                                @if (!Model.Any())
+                                {
+
+                                    <div class="container mt-2">
+
+                                        <hr class="" />
+                                        <br />
+                                        <h5 class="text-center font-weight-bold text-danger">Kullanıcının daha önce yorumu bulunmamaktadır.</h5>
+                                        <br />
+                                        <br />
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-primary text-sm font-weight-bolder">Ad Soyad</th>
+                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Yorumu </th>
+                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Yorum Tarihi</th>
+                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Tur Rotası</th>
+                                            <th class="text-uppercase text-primary text-sm font-weight-bolder ">Yorum Durumu</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="border-top">
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td class="align-middle" width="200px">
+                                                    <p class="mb-0 align-middle text-s">@item.AppUser.Name @item.AppUser.Surname</p>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <p class="text-s mb-0">@item.CommentContent</p>
+                                                </td>
+                                                <td class="align-middle " width="150px">
+                                                    <span>@item.CommentDate.Date.ToShortDateString()</span>
+                                                </td>
+                                                <td class="align-middle" width="100px">
+                                                    <span class=" text-s mb-0">@item.Destination.City</span>
+                                                </td>
+                                                <td width="100px" class="align-middle text-center">
+                                                    <span class="text-secondary mb-0 text-center">
+                                                        @if (item.CommentState == true)
+                                                        {
+                                                            <span>Aktif</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>Pasif</span>
+                                                        }
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

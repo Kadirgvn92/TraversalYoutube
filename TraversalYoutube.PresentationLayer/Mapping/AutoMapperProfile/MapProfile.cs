@@ -28,8 +28,11 @@ public class MapProfile : Profile
         CreateMap<CommentModel,Comment>().ReverseMap();
         CreateMap<GuideModel,Guide>().ReverseMap();
         CreateMap<UserModel,AppUser>().ReverseMap();
+        CreateMap<ReservationModel, Reservation>().ReverseMap();
 
         CreateMap<CreateReservationDTO,Reservation>().ReverseMap();
+
+        CreateMap<ReservationModel,Reservation>().ReverseMap();
 
         CreateMap<SendMessageDTO,Contact>().ReverseMap();
         CreateMap<CityAddDTO,City>().ReverseMap();

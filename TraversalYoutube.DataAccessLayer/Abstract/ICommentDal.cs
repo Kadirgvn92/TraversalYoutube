@@ -9,4 +9,5 @@ namespace TraversalYoutube.DataAccessLayer.Abstract;
 public interface ICommentDal : IGenericDal<Comment>
 {
     public List<Comment> GetListCommentWithDestinationAndUser(int id);
+    public List<Comment> GetListCommentWithUser(int id);
 }

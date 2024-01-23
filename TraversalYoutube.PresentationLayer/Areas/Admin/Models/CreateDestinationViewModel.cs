@@ -12,6 +12,7 @@ public class CreateDestinationViewModel
     public string? Details2 { get; set; }
     public string? Image2 { get; set; }
     public string? CoverImage { get; set; }
+    public int GuideID { get; set; }
     public IFormFile? Image { get; set; }
     public string? imageurl { get; set; }
 }
