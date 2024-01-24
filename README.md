@@ -4,7 +4,7 @@
 
 <a href="https://www.traversal.urusoftware.com"> Projemin canlı sitesine buradan ziyaret edebilirsiniz</a>
 
-<a href="[https://www.traversal.urusoftware.com](https://www.youtube.com/watch?v=ZblVzj04LtM&list=PLKnjBHu2xXNMK5MBogdXmsXVi3K_eEZT5)"> Projemin canlı sitesine buradan ziyaret edebilirsiniz</a>
+<a href="https://www.youtube.com/watch?v=ZblVzj04LtM&list=PLKnjBHu2xXNMK5MBogdXmsXVi3K_eEZT5"> Projemin eğitim videosuna Murat YÜcedağ , buradan erişebilirsiniz</a>
 
 
 Eğitim Serisinde Yer Verilen Teknolojiler;
