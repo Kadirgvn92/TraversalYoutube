@@ -2,7 +2,10 @@
 
 <a href="https://www.linkedin.com/feed/update/urn:li:activity:7155558496111931392/"> Projemin detayları buradan bulabilirsiniz </a>
 
-<a href="https://www.traversal.urusoftware.com"> Projemin detayları buradan bulabilirsiniz </a>
+<a href="https://www.traversal.urusoftware.com"> Projemin canlı sitesine buradan ziyaret edebilirsiniz</a>
+
+<a href="[https://www.traversal.urusoftware.com](https://www.youtube.com/watch?v=ZblVzj04LtM&list=PLKnjBHu2xXNMK5MBogdXmsXVi3K_eEZT5)"> Projemin canlı sitesine buradan ziyaret edebilirsiniz</a>
+
 
 Eğitim Serisinde Yer Verilen Teknolojiler;
 - N Katmanlı Mimari
