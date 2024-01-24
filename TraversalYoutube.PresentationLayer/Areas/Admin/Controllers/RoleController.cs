@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.EntityLayer.Concrete;
@@ -7,6 +8,7 @@ using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 [Area("Admin")]
 [Route("Admin/[controller]/[action]/{id?}")]
+[Authorize(Roles = "Admin")]
 public class RoleController : Controller
 {
     private readonly RoleManager<AppRole> _roleManager;

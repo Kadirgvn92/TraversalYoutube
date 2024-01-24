@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.DTOLayer.DTOs.AnnouncementDTOs;
@@ -8,6 +9,7 @@ namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Route("Admin/[controller]/[action]/{id?}")]
+[Authorize(Roles = "Admin")]
 public class AnnouncementController : Controller
 {
     private readonly IAnnouncementService _announcementService;

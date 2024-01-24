@@ -4,11 +4,13 @@ using TraversalYoutube.BusinessLayer.ValidationRules;
 using TraversalYoutube.EntityLayer.Concrete;
 using FluentValidation.Results;
 using System.Linq.Expressions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Route("Admin/[controller]/[action]/{id?}")]
+[Authorize(Roles = "Admin")]
 
 public class GuideController : Controller
 {

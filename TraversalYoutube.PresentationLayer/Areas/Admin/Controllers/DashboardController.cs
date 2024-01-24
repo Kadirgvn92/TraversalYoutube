@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.BusinessLayer.Concrete;
 using TraversalYoutube.DataAccessLayer.Concrete;
@@ -8,6 +9,7 @@ namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Route("Admin/[controller]/[action]/{id?}")]
+[Authorize(Roles = "Admin")]
 public class DashboardController : Controller
 {
     private readonly IDestinationService _destinationService;

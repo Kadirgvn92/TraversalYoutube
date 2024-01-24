@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Abstract;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
@@ -8,6 +9,7 @@ namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Route("Admin/[controller]/[action]/{id?}")]
+[Authorize(Roles = "Admin")]
 public class DestinationController : Controller
 {
     private readonly IDestinationService _destinationService;

@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.BusinessLayer.Abstract.AbstractUow;
 using TraversalYoutube.EntityLayer.Concrete;
 using TraversalYoutube.PresentationLayer.Areas.Admin.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 [Area("Admin")]
-
+[Authorize(Roles = "Admin")]
 public class AccountController : Controller
 {
     private readonly IAccountService _accountService;

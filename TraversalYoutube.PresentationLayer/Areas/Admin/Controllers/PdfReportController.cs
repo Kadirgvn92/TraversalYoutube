@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TraversalYoutube.DataAccessLayer.Concrete;
 using TraversalYoutube.DTOLayer.DTOs.DestinationDTOs;
@@ -8,6 +9,7 @@ using TraversalYoutube.PresentationLayer.Models;
 
 namespace TraversalYoutube.PresentationLayer.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class PdfReportController : Controller
 {
     private readonly IMapper _mapper;
